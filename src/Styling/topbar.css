@@ -1,0 +1,33 @@
+.navBar {
+    display: flex;
+    gap: 1rem;
+    padding: 1rem;
+    background-color: #3d3d3d;
+    align-items: center; 
+}
+
+.navLeft {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.navRight {
+    margin-left: auto; 
+    color: lightgray;
+    font-size: 1rem;
+}
+
+.navButton {
+    font-size: 1.5rem;
+    font-weight: 600;
+    background-color: inherit;
+    border: none;
+    padding: 0.5rem 1rem; 
+    cursor: pointer;
+}
+
+.mainLogo {
+    height: 4rem;
+    width: 12rem;
+}

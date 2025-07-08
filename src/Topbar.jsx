@@ -1,12 +1,14 @@
-import './global.css'
+import './Styling/global.css'
+import './Styling/topbar.css'
 import { FaCalculator, FaSave } from 'react-icons/fa';
 
 
 function Topbar(){
 
     return(
-        <>
-        <div className="navBar">
+    <>
+    <div className="navBar">
+        <div className="navLeft">
         <img className="mainLogo" src="/SfcLogo.png" alt="logo" />
         <button className="navButton">
             <FaCalculator size={18} style={{ marginRight: '0.4rem' }} />
@@ -17,8 +19,11 @@ function Topbar(){
             Saved
         </button>
         </div>
-        </>
+        <div className="navRight">
+        <a href='https://github.com/BaasW'>made by baasW</a>
+        </div>
+    </div>
+    </>
     ) 
-
 }
 export default Topbar
