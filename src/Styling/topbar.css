@@ -10,6 +10,7 @@
     display: flex;
     gap: 1rem;
     align-items: center;
+    font-size: 1rem;
 }
 
 .navRight {
@@ -25,6 +26,10 @@
     border: none;
     padding: 0.5rem 1rem; 
     cursor: pointer;
+}
+
+.navButton:hover{
+    color:white;
 }
 
 .mainLogo {

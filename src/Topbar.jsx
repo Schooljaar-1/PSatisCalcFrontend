@@ -4,7 +4,6 @@ import { FaCalculator, FaSave } from 'react-icons/fa';
 
 
 function Topbar(){
-
     return(
     <>
     <div className="navBar">

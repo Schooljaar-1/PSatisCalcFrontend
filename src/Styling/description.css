@@ -1,0 +1,14 @@
+a.linkje{
+    color: yellow;
+}
+
+.descriptionBox{
+    display: flex;
+    width: 40vw;
+    margin: 1rem;
+    background-color: #3d3d3d;
+}
+
+.descriptionText{
+    margin: 1rem;
+}
