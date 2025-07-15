@@ -1,10 +1,17 @@
-body {
+body, html, #root {
     background-color: rgb(37, 37, 37);
     font-family: 'Lato', monospace, sans-serif;
     color: aliceblue;
     margin: 0;
     padding: 0;
     color: white;
+    height: 100%;
+}
+
+.page{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
 h1 {

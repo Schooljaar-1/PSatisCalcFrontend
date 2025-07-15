@@ -1,14 +1,16 @@
 import { useState } from 'react'
 import Topbar from './Topbar.jsx'
 import Description  from './Description.jsx'
+import Recipes from './Recipes.jsx'
 
 function App() {
-  const [count, setCount] = useState(0)
-
-  return (
+    return (
     <>
-      <Topbar />
-      <Description />
+      <div className='page'>
+        <Topbar />
+        <Description />
+        <Recipes />
+      </div>
     </>
   )
 }

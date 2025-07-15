@@ -1,16 +1,14 @@
-a.linkje{
-    color: yellow;
-}
-
-.descriptionBox{
+.recipesBox{
     display: flex;
+    flex: 1;
     width: 33vw;
+    flex-direction: column;
+    height: 100%;
     margin: 1rem;
-    margin-bottom: 0.2rem;
     background-color: #3d3d3d;
     border-radius: 0.5rem;
 }
 
-.descriptionText{
+.recipesContent{
     margin: 1rem;
 }
