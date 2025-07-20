@@ -2,6 +2,7 @@ import './Styling/global.css'
 import './Styling/topbar.css'
 import { FaCalculator, FaSave } from 'react-icons/fa';
 
+//TODO: make styling use percentages instead of ER units. It looks whacko on my laptop run cuh
 
 function Topbar(){
     return(
