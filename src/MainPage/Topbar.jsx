@@ -1,6 +1,6 @@
-import './Styling/global.css'
-import './Styling/topbar.css'
 import { FaCalculator, FaSave } from 'react-icons/fa';
+import '../Styling/global.css'
+import '../Styling/topbar.css'
 
 //TODO: make styling use percentages instead of ER units. It looks whacko on my laptop run cuh
 

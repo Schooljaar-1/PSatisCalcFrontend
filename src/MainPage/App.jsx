@@ -3,7 +3,7 @@ import Topbar from './Topbar.jsx'
 import Description  from './Description.jsx'
 import Recipes from './Recipes.jsx'
 import Flowchart from './Flowschart.jsx'
-import './Styling/app.css'
+import '../Styling/app.css'
 
 function App() {
     return (

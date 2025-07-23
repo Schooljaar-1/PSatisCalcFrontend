@@ -1,5 +1,5 @@
-import './Styling/global.css'
-import './Styling/description.css'
+import '../Styling/global.css'
+import '../Styling/description.css'
 
 function Description() {
     return (
