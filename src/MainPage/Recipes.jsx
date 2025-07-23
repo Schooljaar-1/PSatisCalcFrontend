@@ -9,7 +9,7 @@ function Recipes(){
         <div className="recipesBox">
             <div className='recipesContent'>
                 <div className='searchfieldAnToggleBar'>
-                    
+                    {/* code for search field and create */}
                 </div>
             </div>
         </div>
