@@ -1,5 +1,5 @@
-import '../Styling/global.css'
-import '../Styling/flowchart.css'
+import '../MainPage_Styling/global.css'
+import '../MainPage_Styling/flowchart.css'
 
 function Flowchart(){
     return (

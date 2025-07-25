@@ -1,5 +1,5 @@
-import '../Styling/global.css'
-import '../Styling/description.css'
+import '../MainPage_Styling/global.css'
+import '../MainPage_Styling/description.css'
 
 function Description() {
     return (
@@ -11,6 +11,7 @@ function Description() {
                     <p>
                         This tool has been developed to assist you while playing the <a className='linkje' href='https://www.satisfactorygame.com/'>Satisfactory</a> game.
                         With this tool you can:
+                    </p>
                     
                         <ul>
                             <li>Manually enter found <b>recipes</b>.</li>
@@ -20,7 +21,6 @@ function Description() {
                         </ul>
 
                         Without a tool such as SFC it becomes almost impossible to keep your game-world organized. As you explore the world you will find more resources and fabricate more complex parts, increasing your factories' complexity.
-                    </p>
                 </div>
             </div>
         </>

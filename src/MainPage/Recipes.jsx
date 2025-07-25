@@ -1,6 +1,6 @@
 import { useEffect, useState} from 'react';
-import '../Styling/global.css'
-import '../Styling/recipes.css'
+import '../MainPage_Styling/global.css'
+import '../MainPage_Styling/recipes.css'
 
 function Recipes(){
 
