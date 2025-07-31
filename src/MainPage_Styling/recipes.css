@@ -19,6 +19,7 @@
     width: 100%;
     display: inline-flex;
     justify-content: space-between;
+    align-items: baseline;
 }
 
 .toggleButton{
@@ -28,5 +29,9 @@
     border-radius: 9999px;
     width: 8vw;
     border: none;
-    /* TODO: button is too high */
+    height: 2em;
+}
+
+.selectAndCreate{
+
 }

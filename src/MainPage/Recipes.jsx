@@ -15,13 +15,14 @@ function Recipes(){
         <div className="recipesBox">
             <div className='recipesContent'>
                 <div className='titleAndToggleBar'>
-                    <h1>Create or Select Recipes</h1>
+                    <h1>Create or Select Recipes </h1>
                     <button className="toggleButton" onClick={toggleButton}><b>{buttonMessage}</b></button>
                 </div>
+                <div className='selectAndCreate'>
 
+                    {/* TODO: Import the components via if statement on isOn*/}
 
-{/* TODO: Import the components via if statement on isOn*/}
-
+                </div>
             </div>
         </div>
         </>
