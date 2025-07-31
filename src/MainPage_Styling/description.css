@@ -14,3 +14,8 @@ a.linkje{
 .descriptionText{
     margin: 1rem;
 }
+
+.titleText{
+    display: flex;
+    justify-content: center;
+}

@@ -11,6 +11,8 @@ body, html, #root {
 
 h1 {
     font-size: clamp(20px, 1.1vw, 25px);
+    margin-top: 0;
+    margin-bottom: 0;
 }
 
 button {

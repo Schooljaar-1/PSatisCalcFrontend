@@ -6,7 +6,7 @@ function Description() {
         <>
             <div className='descriptionBox'>
                 <div className='descriptionText'>
-                    <h1>Welcome to the SFC (Satisfactory Calculator) tool!</h1>
+                    <h1 className='titleText'>Welcome to the SFC (Satisfactory Calculator) Tool!</h1>
                     <hr />
                     <p>
                         This tool has been developed to assist you while playing the <a className='linkje' href='https://www.satisfactorygame.com/'>Satisfactory</a> game.

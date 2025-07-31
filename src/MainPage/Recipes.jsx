@@ -19,6 +19,7 @@ function Recipes(){
                     <h1>Create or Select Recipes </h1>
                     <button className="toggleButton" onClick={toggleButton}><b>{buttonMessage}</b></button>
                 </div>
+                <hr />
                 <div className='selectAndCreate'>
                     <SelectRecipe />
                     {/* TODO: Import the components via if statement on isOn*/}

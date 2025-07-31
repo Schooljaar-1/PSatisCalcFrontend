@@ -30,6 +30,7 @@
     width: 8vw;
     border: none;
     height: 2em;
+    /* TODO: make mouse change to clickable on hover. Also maybe add some sound effects */
 }
 
 .selectAndCreate{
