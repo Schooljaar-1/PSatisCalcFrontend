@@ -30,7 +30,7 @@
     width: 8vw;
     border: none;
     height: 2em;
-    /* TODO: make mouse change to clickable on hover. Also maybe add some sound effects */
+    /* TODO: make mouse change to clickable on hover. Darken button when hovered over slightly. Also click effect, maybe add some sound effects */
 }
 
 .selectAndCreate{
