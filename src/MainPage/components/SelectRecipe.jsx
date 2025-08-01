@@ -5,11 +5,11 @@ import './selectRecipe.css'
 function SelectRecipe(){
     // Setting URL for fetch
     const API_URL = import.meta.env.VITE_API_URL;
-    // console.log(API_URL);
 
     const [recipeData, setRecipeData] = useState(null);
     const [userInput, setUserInput] = useState(null);
     
+    // ---------FETCHING DATA FROM BACKEND-----------
     useEffect(() => {
         fetch(`${API_URL}/api/Recipe`)
             .then((res) => res.json()) 
@@ -21,8 +21,6 @@ function SelectRecipe(){
             });
     }, []);
 
-    // console.log(recipeData);
-
     const handleErrorMessage = (error) => {
         alert(error);
     }
@@ -30,12 +28,23 @@ function SelectRecipe(){
     const handleUserInput = ({ target }) => {
         setUserInput(target.value)
     }
+    // ---------FETCHING DATA FROM BACKEND-----------
+
+    let content;
+
+    if (recipeData === null) {
+    content = <p><i>Loading...</i></p>;
+    } else {
+    content = <p>worked</p>;
+    }
     
     return (
         <>
         <div className='selectRecipeContainer'>
             <input className='userInputField' type="text" placeholder='Enter a recipe name...' onChange={handleUserInput} id="recipe-name"/>
-            <p>{recipeData === null ? <i>Loading...</i> : 'worked'}</p>
+            {/* TODO: make the loading show a loading icon instead of silly text. */}
+            {/* TODO: unpack the data and make them into nice divs with buttons to add them to the calculation */}
+            {content}
         </div>
         </>
     )
