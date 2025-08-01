@@ -1,0 +1,57 @@
+[
+    {
+        "name": "Iron Plate",
+        "version": "default",
+        "machine": "constructor",
+        "amount": 20,
+        "type": "item",
+        "parts": [
+            {
+                "partName": "Iron ingot",
+                "amount": {
+                    "teller": 30,
+                    "noemer": 1
+                }
+            }
+        ]
+    },
+    {
+        "name": "Screw",
+        "version": "default",
+        "machine": "Constructor",
+        "amount": 40,
+        "type": "item",
+        "parts": [
+            {
+                "partName": "Iron Rod",
+                "amount": {
+                    "teller": 10,
+                    "noemer": 1
+                }
+            }
+        ]
+    },
+    {
+        "name": "Reinforced Iron Plate",
+        "version": "default",
+        "machine": "Assembler",
+        "amount": 5,
+        "type": "item",
+        "parts": [
+            {
+                "partName": "Screw",
+                "amount": {
+                    "teller": 60,
+                    "noemer": 1
+                }
+            },
+            {
+                "partName": "Iron Plate",
+                "amount": {
+                    "teller": 30,
+                    "noemer": 1
+                }
+            }
+        ]
+    }
+]

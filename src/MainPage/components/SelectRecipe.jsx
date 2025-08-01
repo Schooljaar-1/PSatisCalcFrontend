@@ -1,12 +1,13 @@
 import { useEffect, useState} from 'react';
 import '../../MainPage_Styling/global.css'
 import './selectRecipe.css'
+import mockData from './mockData.json'
 
 function SelectRecipe(){
     // Setting URL for fetch
     const API_URL = import.meta.env.VITE_API_URL;
 
-    const [recipeData, setRecipeData] = useState(null);
+    const [recipeData, setRecipeData] = useState(mockData);
     const [userInput, setUserInput] = useState(null);
     
     // ---------FETCHING DATA FROM BACKEND-----------
@@ -16,9 +17,9 @@ function SelectRecipe(){
             .then((data) => {
                 setRecipeData(data);
             })
-            .catch((err) => {
-                handleErrorMessage(err);
-            });
+            // .catch((err) => {
+            //     handleErrorMessage(err);
+            // });
     }, []);
 
     const handleErrorMessage = (error) => {
@@ -30,13 +31,17 @@ function SelectRecipe(){
     }
     // ---------FETCHING DATA FROM BACKEND-----------
 
-    let content;
+    let content = mockData.map(object => (
+        <div className='objectMappingTest' key={object.name}>
+            {object.name}
+        </div>
+    ));
 
-    if (recipeData === null) {
-    content = <p><i>Loading...</i></p>;
-    } else {
-    content = <p>worked</p>;
-    }
+    // if (recipeData === null) {
+    // content = <p><i>Loading...</i></p>;
+    // } else {
+    // content = <p>worked</p>;
+    // }
     
     return (
         <>
