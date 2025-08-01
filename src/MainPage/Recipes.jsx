@@ -21,8 +21,8 @@ function Recipes(){
                 </div>
                 <hr />
                 <div className='selectAndCreate'>
-                    <SelectRecipe />
-                    {/* TODO: Import the components via if statement on isOn*/}
+
+                    {isOn ? <p>Kaas</p> : <SelectRecipe />}
 
                 </div>
             </div>

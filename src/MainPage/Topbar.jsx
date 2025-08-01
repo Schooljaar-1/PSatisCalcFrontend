@@ -7,7 +7,7 @@ function Topbar(){
     <>
     <div className="navBar">
         <div className="navLeft">
-        {/*TODO: Make logo clickable nagivate to homepage*/}
+        {/*TODO: Make logo clickable nagivate to homepage. Gonna need to use React Router...*/}
         <img className="mainLogo" src="/SfcLogo.png" alt="logo" />
         <button className="navButton">
             <FaCalculator size={18} style={{ marginRight: '0.4rem' }} />
