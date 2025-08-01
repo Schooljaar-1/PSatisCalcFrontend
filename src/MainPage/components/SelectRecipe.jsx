@@ -34,12 +34,7 @@ function SelectRecipe(){
         setUserInput(target.value)
     }
     // ---------FETCHING DATA FROM BACKEND-----------
-
-    // let content = mockData.map(object => (
-    //     <div className='objectMappingTest' key={object.name}>
-    //         {object.name}
-    //     </div>
-    // ));
+    
     let content;
 
     if (recipeData === null) {
@@ -48,24 +43,26 @@ function SelectRecipe(){
     );
     } 
     else {
-    content = recipeData.map(object => (
-        <div className='objectMapping'>
+    content = recipeData
+    .filter(object =>
+        userInput === null || object.name.toLowerCase().includes(userInput.toLowerCase())
+    )
+    .map(object => (
+        <div className='objectMapping' key={object.name}>
             <div className='objectImageDiv'>
                 <img 
                     className='objectImage'
-                    key={`${object.name.replace(/\s+/g, '_')}_image`}
                     src={`/recipeImages/${object.name.replace(/\s+/g, '_')}_image.png`}
+                    alt={object.name}
                 />
-                {console.log(`${object.name.replace(/\s+/g, '_')}_image.png`)}       
-
+                {console.log(`${object.name.replace(/\s+/g, '_')}_image.png`)}
             </div>
             <div>
-                Pluis
+                {object.name}
             </div>
         </div>
     ));
     }
-    
     
     return (
         <>
