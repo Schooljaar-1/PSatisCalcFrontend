@@ -19,18 +19,35 @@
     width: 100%;
     display: inline-flex;
     justify-content: space-between;
-    align-items: baseline;
+    align-items: center;
 }
 
 .toggleButton{
     background-color: orange;
     color: black;
-    padding: 0 1vw 0 1vw;
+    padding: 0 0.5vw 0 0,5vw;
+    font-size: 90%;
     border-radius: 9999px;
-    width: 8vw;
+    width: 7vw;
     border: none;
     height: 2em;
-    /* TODO: make mouse change to clickable on hover. Darken button when hovered over slightly. Also click effect, maybe add some sound effects */
+    cursor: pointer;
+}
+
+.toggleButton:hover{
+    filter: brightness(80%);
+}
+
+.toggleButton:active {
+    transform: scale(0.95); /* Slight shrink on click */
+}
+
+.toggleOn{
+    background-color: orange;
+}
+
+.toggleOff{
+    background-color: rgb(255, 225, 0);
 }
 
 .selectAndCreate{

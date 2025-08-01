@@ -16,8 +16,8 @@ function Recipes(){
         <div className="recipesBox">
             <div className='recipesContent'>
                 <div className='titleAndToggleBar'>
-                    <h1>Create or Select Recipes </h1>
-                    <button className="toggleButton" onClick={toggleButton}><b>{buttonMessage}</b></button>
+                    <h1>{isOn ? 'Create' : 'Select'} Recipes </h1>
+                    <button className={`toggleButton ${isOn ? 'toggleOn' : 'toggleOff'}`} onClick={toggleButton}><b>{buttonMessage}</b></button>
                 </div>
                 <hr />
                 <div className='selectAndCreate'>
