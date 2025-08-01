@@ -11,15 +11,19 @@ function SelectRecipe(){
     const [userInput, setUserInput] = useState(null);
     
     // ---------FETCHING DATA FROM BACKEND-----------
-    useEffect(() => {
+    function FetchData() {
         fetch(`${API_URL}/api/Recipe`)
             .then((res) => res.json()) 
             .then((data) => {
                 setRecipeData(data);
             })
-            // .catch((err) => {
-            //     handleErrorMessage(err);
-            // });
+            .catch((err) => {
+                handleErrorMessage(err);
+            });
+    }
+
+    useEffect(() => {
+        FetchData()
     }, []);
 
     const handleErrorMessage = (error) => {
