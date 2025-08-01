@@ -54,8 +54,11 @@ function SelectRecipe(){
                     className='objectImage'
                     src={`/recipeImages/${object.name.replace(/\s+/g, '_')}_image.png`}
                     alt={object.name}
+                    onError={(e) => {
+                        e.target.onerror = null;
+                        e.target.src = '/recipeImages/unknown.png';
+                    }}
                 />
-                {console.log(`${object.name.replace(/\s+/g, '_')}_image.png`)}
             </div>
             <div>
                 {object.name}
