@@ -5,7 +5,7 @@ import SelectRecipe from './components/SelectRecipe.jsx'
 
 function Recipes(){
     const [isOn, setIsOn] = useState(false);
-    const buttonMessage = isOn ? "SELECT" : "CREATE";
+    const buttonMessage = isOn ? "Go to SELECT" : "Go to CREATE";
 
     const toggleButton = () => {
         setIsOn(prev => !prev);

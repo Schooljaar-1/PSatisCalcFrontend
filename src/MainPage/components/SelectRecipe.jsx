@@ -48,7 +48,7 @@ function SelectRecipe(){
         userInput === null || object.name.toLowerCase().includes(userInput.toLowerCase())
     )
     .map(object => (
-        <div className='objectMapping' key={object.name}>
+        <div className='objectMapping' key={object.name} onClick={() => console.log(`Clicked item: ${object.name}`)}>
             <div className='objectImageDiv'>
                 <img 
                     className='objectImage'
@@ -60,8 +60,17 @@ function SelectRecipe(){
                     }}
                 />
             </div>
-            <div>
-                {object.name}
+            <div className='objectDescriptionDiv'>
+                <div className='objectBasicDescription'>
+                    <p><b>Name:</b> {object.name}</p>
+                    <p><b>Machine:</b> {object.machine}</p>
+                    <p><b>Version:</b> {object.version}</p>
+                </div>
+                <div className='objectAdvancedDescription'>
+                    <p><b>Name:</b> {object.name}</p>
+                    <p><b>Machine:</b> {object.machine}</p>
+                    <p><b>Version:</b> {object.version}</p>
+                </div>
             </div>
         </div>
     ));

@@ -10,25 +10,59 @@
     outline: none; 
     border: 1px solid #ccc;
     margin-bottom: 0.5vh;
+    background-color: rgb(223, 223, 223);
 }
 
 .objectMapping {
     display: flex;
     flex-direction: row;
     color: black;
-    background-color: white;
+    background-color: rgb(223, 223, 223);
     margin-bottom: 0.5vh;
     width: 95%;
+    border-radius: 1em;
+}
+
+.objectMapping:hover {
+  background-color: rgb(240, 240, 240); /* lighter shade */
 }
 
 .objectImage {
-    width: 30%;
+    width: 40%;
     height: auto;
-    object-fit: contain; /* or cover if you want to crop */
+    object-fit: contain; 
     padding: 0.5vw;
 }
+
 .objectImageDiv{
     display: flex;
+    width: 10%;
+    justify-content: center;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    border-right: 2px solid rgb(100, 100, 100);
+}
+
+.objectDescriptionDiv{
+    display: flex;
+    width: 90%;
+    flex-direction: row;
+    font-family: "Google Sans Code", monospace;
+    align-items: center;
+    margin-left: 1em;
+    justify-content: space-between;
+}
+
+.objectBasicDescription{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+
+.objectAdvancedDescription{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
 }
 
 .generatedDivList{
@@ -40,7 +74,7 @@
 
 .spinner {
   border: 4px solid rgba(0, 0, 0, 0.1);
-  border-top: 4px solid orange; /* or your theme color */
+  border-top: 4px solid orange; 
   border-radius: 50%;
   width: 30px;
   height: 30px;
