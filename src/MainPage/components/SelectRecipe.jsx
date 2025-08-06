@@ -67,9 +67,16 @@ function SelectRecipe(){
                     <p><b>Version:</b> {object.version}</p>
                 </div>
                 <div className='objectAdvancedDescription'>
-                    <p><b>Name:</b> {object.name}</p>
-                    <p><b>Machine:</b> {object.machine}</p>
-                    <p><b>Version:</b> {object.version}</p>
+                    <p><b>Parts:</b> {object.parts.map(part => part.partName).join(', ')}</p>
+                    <p><b>Amount:</b> {object.amount}/min</p>
+                </div>
+                <div className='objectEditAndDelete'>
+                    <div className='deleteButton'>
+
+                    </div>
+                    <div className='editButton'>
+
+                    </div>
                 </div>
             </div>
         </div>
