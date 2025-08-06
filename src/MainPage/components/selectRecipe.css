@@ -111,7 +111,7 @@
 }
 
 .deleteButton{
-    background-color: rgb(219, 89, 89);
+    background-color: rgb(255, 119, 119);
     border: none;
     cursor: pointer;
     color: black;
@@ -129,7 +129,7 @@
 }
 
 .editButton{
-    background-color: orange;
+    background-color: rgb(255, 195, 83);
     border: none;
     cursor: pointer;
     color: black;
