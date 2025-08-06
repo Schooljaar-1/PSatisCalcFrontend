@@ -48,6 +48,7 @@ function SelectRecipe(){
     .filter(object =>
         userInput === null || object.name.toLowerCase().includes(userInput.toLowerCase())
     )
+    // TODO: the onclick things under here should add the recipe in an array to be shown at the flowchart div. From there amount can be chosen and also ofc be deselected. Try to see if you can get deselect to happen at right click
     .map(object => (
         <div className='objectMapping' key={object.name}>
             <div className='objectImageDiv' onClick={() => console.log(`Clicked item: ${object.name}`)}>
@@ -68,6 +69,7 @@ function SelectRecipe(){
                     <p><b>Version:</b> {object.version}</p>
                 </div>
                 <div className='objectAdvancedDescriptionDiv' onClick={() => console.log(`Clicked item: ${object.name}`)}>
+                    {/* TODO: Also show the amount per minute for the parts */}
                     <p><b>Parts:</b> {object.parts.map(part => part.partName).join(', ')}</p>
                     <p><b>Amount:</b> {object.amount}/min</p>
                 </div>
@@ -89,10 +91,6 @@ function SelectRecipe(){
         <>
         <div className='selectRecipeContainer'>
             <input className='userInputField' type="text" placeholder='Enter a recipe name...' onChange={handleUserInput} id="recipe-name"/>
-            
-            {/* TODO: Make up divs, also code to show unknown image if the image isn't added to the public folder yet */}
-            {/* TODO: unpack the data and make them into nice divs with buttons to add them to the calculation */}
-
             <div className='generatedDivList'>
                 {content}
             </div>
