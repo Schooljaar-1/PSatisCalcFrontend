@@ -1,4 +1,5 @@
 import { useEffect, useState} from 'react';
+import {FaTrash} from 'react-icons/fa'
 import '../../MainPage_Styling/global.css'
 import './selectRecipe.css'
 import mockData from './mockData.json'
@@ -48,8 +49,8 @@ function SelectRecipe(){
         userInput === null || object.name.toLowerCase().includes(userInput.toLowerCase())
     )
     .map(object => (
-        <div className='objectMapping' key={object.name} onClick={() => console.log(`Clicked item: ${object.name}`)}>
-            <div className='objectImageDiv'>
+        <div className='objectMapping' key={object.name}>
+            <div className='objectImageDiv' onClick={() => console.log(`Clicked item: ${object.name}`)}>
                 <img 
                     className='objectImage'
                     src={`/recipeImages/${object.name.replace(/\s+/g, '_')}_image.png`}
@@ -60,22 +61,23 @@ function SelectRecipe(){
                     }}
                 />
             </div>
-            <div className='objectDescriptionDiv'>
+            <div className='objectDescriptionDiv' onClick={() => console.log(`Clicked item: ${object.name}`)}>
                 <div className='objectBasicDescription'>
                     <p><b>Name:</b> {object.name}</p>
                     <p><b>Machine:</b> {object.machine}</p>
                     <p><b>Version:</b> {object.version}</p>
                 </div>
-                <div className='objectAdvancedDescription'>
+                <div className='objectAdvancedDescriptionDiv' onClick={() => console.log(`Clicked item: ${object.name}`)}>
                     <p><b>Parts:</b> {object.parts.map(part => part.partName).join(', ')}</p>
                     <p><b>Amount:</b> {object.amount}/min</p>
                 </div>
                 <div className='objectEditAndDelete'>
-                    <div className='deleteButton'>
-
+                    <div className='objectDelete'>
+                        {/* TODO: make these buttons actually work, but make sure that it doesn't double click because the div is already onClick! *ALREADY FIXED DOUBLE CLICK WB06/08/25*/}
+                        <button className='deleteButton'><b>DELETE</b></button>                    
                     </div>
-                    <div className='editButton'>
-
+                    <div className='objectEdit'>
+                        <button className='editButton'><b>EDIT</b></button>
                     </div>
                 </div>
             </div>
