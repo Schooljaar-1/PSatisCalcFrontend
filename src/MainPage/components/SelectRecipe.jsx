@@ -69,8 +69,7 @@ function SelectRecipe(){
                     <p><b>Version:</b> {object.version}</p>
                 </div>
                 <div className='objectAdvancedDescriptionDiv' onClick={() => console.log(`Clicked item: ${object.name}`)}>
-                    {/* TODO: Also show the amount per minute for the parts */}
-                    <p><b>Parts:</b> {object.parts.map(part => part.partName).join(', ')}</p>
+                    <p><b>Parts:</b> {object.parts.map(part => `${part.partName}(${part.amount.teller})`).join(', ')}</p>
                     <p><b>Amount:</b> {object.amount}/min</p>
                 </div>
                 <div className='objectEditAndDelete'>
