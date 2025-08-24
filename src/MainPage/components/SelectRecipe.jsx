@@ -77,6 +77,7 @@ function SelectRecipe(){
                         <button className='deleteButton'><b>DELETE</b></button>                    
                     </div>
                     <div className='objectEdit'>
+                        {/* TODO: Make edit function into backend */}
                         <button className='editButton'><b>EDIT</b></button>
                     </div>
                 </div>
