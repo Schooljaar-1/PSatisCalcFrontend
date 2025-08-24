@@ -1,7 +1,8 @@
 import { useEffect, useState} from 'react';
 import '../MainPage_Styling/global.css'
 import '../MainPage_Styling/recipes.css'
-import { SelectRecipe, CreateRecipe } from './components/SelectRecipe.jsx'
+import SelectRecipe from './components/SelectRecipe.jsx'
+import CreateRecipe from './components/CreateRecipe.jsx'
 
 
 function Recipes(){
