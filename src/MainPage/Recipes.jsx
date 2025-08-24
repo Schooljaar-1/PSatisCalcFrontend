@@ -1,7 +1,8 @@
 import { useEffect, useState} from 'react';
 import '../MainPage_Styling/global.css'
 import '../MainPage_Styling/recipes.css'
-import SelectRecipe from './components/SelectRecipe.jsx'
+import { SelectRecipe, CreateRecipe } from './components/SelectRecipe.jsx'
+
 
 function Recipes(){
     const [isOn, setIsOn] = useState(false);
@@ -22,7 +23,7 @@ function Recipes(){
                 <hr />
                 <div className='selectAndCreate'>
 
-                    {isOn ? <p>Kaas</p> : <SelectRecipe />}
+                    {isOn ? <CreateRecipe /> : <SelectRecipe />}
 
                 </div>
             </div>

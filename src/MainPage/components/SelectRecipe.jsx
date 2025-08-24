@@ -1,5 +1,4 @@
 import { useEffect, useState} from 'react';
-import {FaTrash} from 'react-icons/fa'
 import '../../MainPage_Styling/global.css'
 import './selectRecipe.css'
 import mockData from './mockData.json'
