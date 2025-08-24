@@ -95,7 +95,7 @@ function SelectRecipe(){
             </div>
         </div>
         </>
-    )
+    );
 }
 
 export default SelectRecipe
