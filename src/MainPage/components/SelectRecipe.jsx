@@ -43,10 +43,8 @@ function SelectRecipe(){
     );
     } 
     else {
-    content = recipeData
-    .filter(object =>
-        userInput === null || object.name.toLowerCase().includes(userInput.toLowerCase())
-    )
+    content = recipeData.filter(object =>userInput === null || object.name.toLowerCase().includes(userInput.toLowerCase()))
+    
     // TODO: the onclick things under here should add the recipe in an array to be shown at the flowchart div. From there amount can be chosen and also ofc be deselected. Try to see if you can get deselect to happen at right click
     .map(object => (
         <div className='objectMapping' key={object.name}>

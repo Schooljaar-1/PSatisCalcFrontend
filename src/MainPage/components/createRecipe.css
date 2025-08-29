@@ -1,6 +1,40 @@
 .createRecipeContainer{
+    display: flex;
+    flex-direction: column;
     width: inherit;
     background-color: rgb(223, 223, 223);
     color: black;
     border-radius: 8px; 
+}
+
+.createRecipeQueryAndSelecter{
+    display: flex;
+}
+
+.createRecipeSelectImage{
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1em 2em 1em 2em;
+    transform: translateX(12.5%);
+}
+
+.itemImage{
+    width: 15%;
+    margin-bottom: 0.2em;
+}
+
+.createRecipeUserInputField{
+    width: 40%;
+    height: 1em;
+    border-radius: 8px; 
+    outline: none; 
+    border: 1px solid #ccc;
+    text-align: center;
+}
+
+.createRecipeSelectWindow{
+    display: flex;
+    width: 25%;
 }
