@@ -1,4 +1,5 @@
 import { useEffect, useState} from 'react';
+import recipeImageNames from '../../assets/recipeImageNames.json'
 import '../../MainPage_Styling/global.css'
 import './createRecipe.css'
 
@@ -8,11 +9,17 @@ function CreateRecipe(){
 
     const [query, setQuery] = useState("");
 
-    const options = ["boter", "kaas", "Eieren"]
-
     const HandleUserInput = ( {target} ) => {
         setQuery(target.value)
     }
+
+    let content;
+    content = recipeImageNames.filter(object => query===null ||  object.toLowerCase().includes(query.toLowerCase()))
+    .map(object => (
+        <div className='createObjectMapping'>
+            <p>hello</p>
+        </div>
+    ));
 
 
     return(
@@ -34,7 +41,7 @@ function CreateRecipe(){
                         <input className='createRecipeUserInputField' type="text" placeholder='Enter name of item...' onChange={HandleUserInput} id="recipe-name"/>
                     </div>
                     <div className='createRecipeSelectWindow'>
-                        <p>KLaas</p>
+                        {content}
                     </div>
 
                 </div>
