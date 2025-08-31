@@ -12,16 +12,16 @@
 }
 
 .createRecipeSelectImage{
-    width: 75%;
+    width: 70%;
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 1em 2em 1em 2em;
-    transform: translateX(12.5%);
+    transform: translateX(5%);
 }
 
 .itemImage{
-    width: 15%;
+    width: 20%;
     margin-bottom: 0.2em;
 }
 
@@ -36,5 +36,8 @@
 
 .createRecipeSelectWindow{
     display: flex;
-    width: 25%;
+    width: 30%;
+    border-radius: 8px; 
+    background-color: white;
+    margin: 0.5em;
 }

@@ -51,7 +51,7 @@ function SelectRecipe(){
             <div className='objectImageDiv' onClick={() => console.log(`Clicked item: ${object.name}`)}>
                 <img 
                     className='objectImage'
-                    src={`/recipeImages/${object.name.replace(/\s+/g, '_')}_image.png`}
+                    src={`/recipeImages/${object.image}`}
                     alt={object.name}
                     onError={(e) => {
                         e.target.onerror = null;
