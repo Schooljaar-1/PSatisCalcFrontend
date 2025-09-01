@@ -13,13 +13,23 @@ function CreateRecipe(){
         setQuery(target.value)
     }
 
+    // Generating search window items
     let content;
-    content = recipeImageNames.filter(object => query===null ||  object.toLowerCase().includes(query.toLowerCase()))
-    .map(object => (
-        <div className='createObjectMapping'>
-            <p>hello</p>
-        </div>
-    ));
+    content = recipeImageNames
+        .filter(object => query === null || object.replace(/\s+/g, '').toLowerCase().includes(query.replace(/\s+/g, '').toLowerCase()))
+        .map(object => {
+            const imageName = object.replace(/\s+/g, '');
+            return (
+                <div className='createObjectMapping' key={object} onClick={()=>setQuery(imageName)}>
+                    <img 
+                        className='queryItemImage'
+                        src={`recipeImages/${imageName}.png`}
+                        alt={`${object}.png`}
+                    />
+                    <p className='objectImageText'>{object}</p>
+                </div>
+            );
+        });
 
 
     return(
@@ -38,7 +48,14 @@ function CreateRecipe(){
                                 e.target.src = '/recipeImages/unknown.png';
                             }}
                         />
-                        <input className='createRecipeUserInputField' type="text" placeholder='Enter name of item...' onChange={HandleUserInput} id="recipe-name"/>
+                        <input 
+                            className='createRecipeUserInputField' 
+                            type="text" 
+                            placeholder='Enter name of item...' 
+                            onChange={HandleUserInput} 
+                            id="recipe-name" 
+                            value={query}
+                        />
                     </div>
                     <div className='createRecipeSelectWindow'>
                         {content}
