@@ -79,5 +79,8 @@
 }
 
 .objectImageText{
+    display: flex;
+    width: 100%;
     font-family: "Google Sans Code", monospace;
+    text-align: center;
 }
