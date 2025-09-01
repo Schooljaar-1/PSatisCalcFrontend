@@ -57,6 +57,10 @@
     margin: 0.2em;
 }
 
+.createObjectMapping:hover {
+  background-color: rgb(240, 240, 240); 
+}
+
 .queryItemImage{
     width: 5em;
     padding: 0.5em;
