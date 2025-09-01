@@ -7,6 +7,7 @@ function CreateRecipe(){
     // Setting URL for fetch
     const API_URL = import.meta.env.VITE_API_URL;
 
+    // Replace item image useState variable with the whole object that will eventually be sent over. 
     const [itemImageName, setQuery] = useState("");
 
     const HandleUserInput = ( {target} ) => {
@@ -60,6 +61,9 @@ function CreateRecipe(){
                         {content}
                     </div>
 
+                </div>
+                <div className='createRecipeMainInfo'>
+                    <p>hi</p>
                 </div>
 
             </div>

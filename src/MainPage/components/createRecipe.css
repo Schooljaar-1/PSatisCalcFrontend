@@ -7,9 +7,21 @@
     border-radius: 8px; 
 }
 
-.createRecipeQueryAndSelecter{
+.createRecipeQueryAndSelecter {
     display: flex;
-    height: 15em;
+    height: 20em;
+    position: relative; 
+}
+
+.createRecipeQueryAndSelecter::after {
+    content: "";
+    position: absolute;
+    left: 2em;   
+    right: 2em;  
+    bottom: 0;
+    height: 2px;
+    background: gray;
+    border-radius: 1px;
 }
 
 .createRecipeSelectImage{
@@ -22,7 +34,7 @@
 }
 
 .itemImage{
-    width: 10em;
+    width: 15em;
     margin-bottom: 0.2em;
 }
 
