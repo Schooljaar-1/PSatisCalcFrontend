@@ -7,16 +7,16 @@ function CreateRecipe(){
     // Setting URL for fetch
     const API_URL = import.meta.env.VITE_API_URL;
 
-    const [query, setQuery] = useState("");
+    const [imageName, setimageName] = useState("");
 
     const HandleUserInput = ( {target} ) => {
-        setQuery(target.value)
+        setimageName(target.value)
     }
 
     // Generating search window items
     let content;
     content = recipeImageNames
-        .filter(object => query === null || object.replace(/\s+/g, '').toLowerCase().includes(query.replace(/\s+/g, '').toLowerCase()))
+        .filter(object => imageName === null || object.replace(/\s+/g, '').toLowerCase().includes(imageName.replace(/\s+/g, '').toLowerCase()))
         .map(object => {
             const imageName = object.replace(/\s+/g, '');
             return (
@@ -41,8 +41,8 @@ function CreateRecipe(){
                     <div className='createRecipeSelectImage'>
                         <img 
                             className='itemImage'
-                            src={`/recipeImages/${query}.png`}
-                            alt={`${query}.png`}
+                            src={`/recipeImages/${imageName}.png`}
+                            alt={`${imageName}.png`}
                             onError={(e) => {
                                 e.target.onerror = null;
                                 e.target.src = '/recipeImages/unknown.png';
@@ -54,7 +54,7 @@ function CreateRecipe(){
                             placeholder='Enter name of item...' 
                             onChange={HandleUserInput} 
                             id="recipe-name" 
-                            value={query}
+                            value={imageName}
                         />
                     </div>
                     <div className='createRecipeSelectWindow'>
