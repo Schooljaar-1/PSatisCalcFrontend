@@ -47,7 +47,6 @@ function CreateRecipe(){
             );
         });
 
-
     return(
         <>
             <div className='createRecipeContainer'>
@@ -67,7 +66,7 @@ function CreateRecipe(){
                         <input 
                             className='createRecipeUserInputField' 
                             type="text" 
-                            placeholder='Enter name of item...' 
+                            placeholder='Enter name of item for image reference...' 
                             onChange={HandleUserInput} 
                             id="recipe-name" 
                             value={recipe.image}/>
@@ -78,6 +77,7 @@ function CreateRecipe(){
 
                 </div>
                 <div className='createRecipeMainInfo'>
+                    {/* TODO: Create input fields for main recipe information, after generate parts dynamically max 3 I believe. */}
                     <p>hi</p>
                 </div>
 
