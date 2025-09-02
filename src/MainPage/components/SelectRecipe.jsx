@@ -15,6 +15,12 @@ function SelectRecipe(){
         fetch(`${API_URL}/api/Recipe`)
             .then((res) => res.json()) 
             .then((data) => {
+                if ("error" in data)
+                {handleErrorMessage(data.error)
+                    return;
+                }
+            })
+            .then((data) => {
                 setRecipeData(data);
             })
             .catch((err) => {
@@ -37,12 +43,13 @@ function SelectRecipe(){
     
     let content;
 
-    if (recipeData === null) {
+    if (recipeData === null || recipeData === undefined) {
     content = (
         <div className="spinner"></div>
     );
     } 
     else {
+    console.log(content);
     content = recipeData.filter(object =>userInput === null || object.name.toLowerCase().includes(userInput.toLowerCase()))
     
     // TODO: the onclick things under here should add the recipe in an array to be shown at the flowchart div. From there amount can be chosen and also ofc be deselected. Try to see if you can get deselect to happen at right click

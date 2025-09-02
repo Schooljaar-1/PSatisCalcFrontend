@@ -25,7 +25,7 @@
 }
 
 .createRecipeSelectImage{
-    width: 70%;
+    width: 60%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -34,12 +34,12 @@
 }
 
 .itemImage{
-    width: 15em;
+    height: 90%;
     margin-bottom: 0.2em;
 }
 
 .createRecipeUserInputField{
-    width: 50%;
+    width: 90%;
     height: 1em;
     border-radius: 8px; 
     outline: none; 
@@ -51,7 +51,7 @@
 .createRecipeSelectWindow{
     display: flex;
     flex-direction: column;
-    width: 30%;
+    width: 40%;
     border-radius: 4px; 
     background-color: #3d3d3d;
     margin: 0.5em;
@@ -74,7 +74,7 @@
 }
 
 .queryItemImage{
-    width: 5em;
+    width: 30%;
     padding: 0.5em;
 }
 
