@@ -8,16 +8,12 @@
 
 .navLeft {
     display: flex;
+    width: 40%;
     gap: 1rem;
     align-items: center;
     font-size: 1rem;
 }
 
-.navRight {
-    margin-left: auto; 
-    color: lightgray;
-    font-size: 1rem;
-}
 
 .navButton {
     font-size: 1.5rem;
@@ -35,4 +31,28 @@
 .mainLogo {
     height: 4rem;
     width: 12rem;
+}
+
+.navRight {
+    display: flex;
+    width: 60%;
+    justify-content: end;
+    align-items: center;
+    margin-left: auto; 
+    color: lightgray;
+    font-size: 1rem;
+}
+
+.status-dot {
+    width: .5em;
+    height: .5em;
+    border-radius: 50%;
+}
+
+.status-offline{
+    background-color: red;
+}
+
+.status-online{
+    background-color: green;
 }

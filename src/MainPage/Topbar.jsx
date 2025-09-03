@@ -36,7 +36,9 @@ function Topbar(){
         </button>
         </div>
         <div className="navRight">
-        <a href='https://github.com/BaasW'>made by baasW</a>
+            <span class={`status-dot ${apiIsOnline ? 'status-online' : 'status-offline'}`} aria-hidden="true"></span>
+            <p>API {apiIsOnline ? 'online' : 'offline'} ||</p>
+            <a className='shoutout' href='https://github.com/BaasW'>made by baasW</a>
         </div>
     </div>
     </>
