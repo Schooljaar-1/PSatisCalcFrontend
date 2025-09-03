@@ -1,8 +1,25 @@
 import { FaCalculator, FaSave } from 'react-icons/fa';
+import {useState} from 'react';
 import '../MainPage_Styling/global.css'
 import '../MainPage_Styling/topbar.css'
 
 function Topbar(){
+    const API_URL = import.meta.env.VITE_API_URL;
+    const [apiIsOnline, setApiIsOnline] = useState(false);
+
+    const APIStatusCheck = async () => {
+        try{
+            const res =  await fetch(`${API_URL}/api/Recipe/status`)
+            if(res.status === 200){
+                setApiIsOnline(true);
+            }
+        }
+        catch{
+            setApiIsOnline(false);
+        }
+    }
+    APIStatusCheck();
+
     return(
     <>
     <div className="navBar">
