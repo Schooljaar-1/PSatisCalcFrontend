@@ -30,7 +30,6 @@
     flex-direction: column;
     align-items: center;
     padding: 1em 2em 1em 2em;
-    transform: translateX(5%);
 }
 
 .itemImage{
@@ -39,7 +38,7 @@
 }
 
 .createRecipeUserInputField{
-    width: 90%;
+    width: 95%;
     height: 1em;
     border-radius: 8px; 
     outline: none; 
