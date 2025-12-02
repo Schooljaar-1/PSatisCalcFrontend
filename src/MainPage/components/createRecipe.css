@@ -85,9 +85,21 @@
 }
 
 .createRecipeMainInfo{
+    position: relative;
     width: 98%;
     display: flex;
-    margin-left: 1em;
+    margin: 1em;
+}
+
+.createRecipeMainInfo::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -0.5em; /* Adjust as needed for spacing */
+    height: 2px;
+    background: #888; /* Match your vertical line color */
+    border-radius: 1px;
 }
 
 .createRecipeLeftMenuItems{
@@ -101,7 +113,7 @@
     justify-content: space-between;
 }
 
-.createRecipeLeftMenuInputs{
+.createRecipeMenuInputs{
     width: 70%;
     height: 1em;
     border-radius: 8px; 
@@ -120,4 +132,8 @@
     background: #888; /* Use a visible color */
     border-radius: 1px;
     z-index: 1;
+}
+
+.createRecipeRightMenuItems{
+    width: 50%;
 }

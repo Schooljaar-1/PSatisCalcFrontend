@@ -12,7 +12,7 @@ function CreateRecipe(){
             name: "",
             version: "",
             machine: "",
-            amount: 0,
+            amount: "",
             type: "",
             image: "",
             parts: []
@@ -80,12 +80,11 @@ function CreateRecipe(){
 
                 </div>
                 <div className='createRecipeMainInfo'>
-                {/* TODO: Create input fields for main recipe information, after generate parts dynamically max 3 I believe. */}
                     <div className='createRecipeLeftMenuItems'>
                         <div className='createRecipeLeftMenuSingle'>
                             <p><b>Name:</b></p>
                             <input 
-                                className='createRecipeLeftMenuInputs' 
+                                className='createRecipeMenuInputs' 
                                 type="text" 
                                 placeholder='Enter recipe name...' 
                                 onChange={HandleUserInput} 
@@ -97,7 +96,7 @@ function CreateRecipe(){
                         <div className='createRecipeLeftMenuSingle'>
                             <p><b>Machine:</b></p>
                             <input 
-                                className='createRecipeLeftMenuInputs' 
+                                className='createRecipeMenuInputs' 
                                 type="text" 
                                 placeholder='Enter recipe machine type...' 
                                 onChange={HandleUserInput} 
@@ -106,19 +105,37 @@ function CreateRecipe(){
                                 value={recipe.machine}
                             /> 
                         </div>
+                    </div>
+                    <div className='createRecipeRightMenuItems'>
                         <div className='createRecipeLeftMenuSingle'>
                             <p><b>Version:</b></p>
                             <input 
-                                className='createRecipeLeftMenuInputs' 
+                                className='createRecipeMenuInputs' 
                                 type="text" 
                                 placeholder='Enter recipe version...' 
                                 onChange={HandleUserInput} 
-                                id="recipe-version" 
+                                id="recipe-name" 
                                 name="version" 
                                 value={recipe.version}
                             /> 
                         </div>
+                        <div className='createRecipeLeftMenuSingle'>
+                            <p><b>Amount:</b></p>
+                            <input 
+                                className='createRecipeMenuInputs' 
+                                type="text" 
+                                placeholder='Enter recipe amounter p/m...' 
+                                onChange={HandleUserInput} 
+                                id="recipe-version" 
+                                name="amount" 
+                                value={recipe.amount}
+                            /> 
+                        </div>
                     </div>
+                </div>
+                {/* TODO: Implement same code as in recipe selector to be able to select older recipes as parts that are used by new one */}
+                <div className='createRecipePartsSelector'>
+                    <p>hi</p>
                 </div>
             </div>
         </>
