@@ -15,16 +15,15 @@ function SelectRecipe(){
         fetch(`${API_URL}/api/Recipe`)
             .then((res) => res.json()) 
             .then((data) => {
-                if ("error" in data)
-                {handleErrorMessage(data.error)
-                    return;
+                if ("error" in data) {
+                    handleErrorMessage(data.error);
+                    return; // This stops further processing
                 }
-            })
-            .then((data) => {
+                // Process the data here instead of in another .then()
                 setRecipeData(data);
             })
             .catch((err) => {
-                handleErrorMessage(err);
+                handleErrorMessage(err.message || "Failed to fetch recipes");
             });
     }
 
@@ -58,7 +57,7 @@ function SelectRecipe(){
             <div className='objectImageDiv' onClick={() => console.log(`Clicked item: ${object.name}`)}>
                 <img 
                     className='objectImage'
-                    src={`/recipeImages/${object.image}`}
+                    src={`/recipeImages/${object.image}.png`}
                     alt={object.name}
                     onError={(e) => {
                         e.target.onerror = null;
