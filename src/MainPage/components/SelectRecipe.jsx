@@ -9,8 +9,10 @@ function SelectRecipe(){
 
     const [recipeData, setRecipeData] = useState(null);
     const [userInput, setUserInput] = useState(null);
+    const [apiIsOnline, setApiIsOnline] = useState(false);
+
     
-    // ---------FETCHING DATA FROM BACKEND-----------
+    // ---------FETCHING DATA FROM BACKEND + STATUS CHECK-----------
     function FetchData() {
         fetch(`${API_URL}/api/Recipe`)
             .then((res) => res.json()) 
@@ -35,13 +37,29 @@ function SelectRecipe(){
         alert(error);
     }
 
+    const APIStatusCheck = async () => {
+        try{
+            const res =  await fetch(`${API_URL}/api/Recipe/status`)
+            if(res.status === 200){
+                setApiIsOnline(true);
+            }
+        }
+        catch{
+            setApiIsOnline(false);
+        }
+    }
+    APIStatusCheck();
+    // ---------FETCHING DATA FROM BACKEND + STATUS CHECK-----------
+
+    // ---------ADDITIONAL FUNCTIONS--------------------------------
     const handleUserInput = ({ target }) => {
         setUserInput(target.value)
     }
-    // ---------FETCHING DATA FROM BACKEND-----------
+    // ---------ADDITIONAL FUNCTIONS--------------------------------
     
     let content;
 
+    // TODO: Use API status check to prevent infinite spinner border when no recipes are present. (No data + API online --> No recipes found)
     if (recipeData === null || recipeData === undefined) {
     content = (
         <div className="spinner"></div>
