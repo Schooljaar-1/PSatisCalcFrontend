@@ -20,9 +20,11 @@ function CreateRecipe(){
     );
 
     const HandleUserInput = ({ target }) => {
+        const { name, value } = target;
+
         setRecipe(prev => ({
             ...prev,
-            image: target.value
+            [name]: value
         }));
     };
 
@@ -68,7 +70,8 @@ function CreateRecipe(){
                             type="text" 
                             placeholder='Enter name of item for image reference...' 
                             onChange={HandleUserInput} 
-                            id="recipe-name" 
+                            id="recipe-name"
+                            name="image" 
                             value={recipe.image}/>
                     </div>
                     <div className='createRecipeSelectWindow'>
@@ -77,10 +80,46 @@ function CreateRecipe(){
 
                 </div>
                 <div className='createRecipeMainInfo'>
-                    {/* TODO: Create input fields for main recipe information, after generate parts dynamically max 3 I believe. */}
-                    <p>hi</p>
+                {/* TODO: Create input fields for main recipe information, after generate parts dynamically max 3 I believe. */}
+                    <div className='createRecipeLeftMenuItems'>
+                        <div className='createRecipeLeftMenuSingle'>
+                            <p><b>Name:</b></p>
+                            <input 
+                                className='createRecipeLeftMenuInputs' 
+                                type="text" 
+                                placeholder='Enter recipe name...' 
+                                onChange={HandleUserInput} 
+                                id="recipe-name" 
+                                name="name" 
+                                value={recipe.name}
+                            /> 
+                        </div>
+                        <div className='createRecipeLeftMenuSingle'>
+                            <p><b>Machine:</b></p>
+                            <input 
+                                className='createRecipeLeftMenuInputs' 
+                                type="text" 
+                                placeholder='Enter recipe machine type...' 
+                                onChange={HandleUserInput} 
+                                id="recipe-version" 
+                                name="machine" 
+                                value={recipe.machine}
+                            /> 
+                        </div>
+                        <div className='createRecipeLeftMenuSingle'>
+                            <p><b>Version:</b></p>
+                            <input 
+                                className='createRecipeLeftMenuInputs' 
+                                type="text" 
+                                placeholder='Enter recipe version...' 
+                                onChange={HandleUserInput} 
+                                id="recipe-version" 
+                                name="version" 
+                                value={recipe.version}
+                            /> 
+                        </div>
+                    </div>
                 </div>
-
             </div>
         </>
     );

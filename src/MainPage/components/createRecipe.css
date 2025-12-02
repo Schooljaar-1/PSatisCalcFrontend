@@ -83,3 +83,41 @@
     font-family: "Google Sans Code", monospace;
     text-align: center;
 }
+
+.createRecipeMainInfo{
+    width: 98%;
+    display: flex;
+    margin-left: 1em;
+}
+
+.createRecipeLeftMenuItems{
+    position: relative;
+    width: 50%;
+}
+
+.createRecipeLeftMenuSingle{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.createRecipeLeftMenuInputs{
+    width: 70%;
+    height: 1em;
+    border-radius: 8px; 
+    outline: none; 
+    border: 1px solid #ccc;
+    margin-right: 0.5em;
+}
+
+.createRecipeLeftMenuItems::after {
+    content: "";
+    position: absolute;
+    top: 0.5em;
+    right: 0;
+    bottom: 0.5em;
+    width: 2px;
+    background: #888; /* Use a visible color */
+    border-radius: 1px;
+    z-index: 1;
+}
