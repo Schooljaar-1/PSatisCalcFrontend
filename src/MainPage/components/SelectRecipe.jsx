@@ -90,8 +90,8 @@ function SelectRecipe(){
                     <p><b>Version:</b> {object.version}</p>
                 </div>
                 <div className='objectAdvancedDescriptionDiv' onClick={() => console.log(`Clicked item: ${object.name}`)}>
-                    <p><b>Parts:</b> {object.parts.map(part => `${part.partName}(${part.amount.teller})`).join(', ')}</p>
-                    <p><b>Amount:</b> {object.amount}/min</p>
+                    <p><b>Parts:</b> {object.parts.map(part => `${part.partName}(${part.amount.teller}/${part.amount.noemer})`).join(', ')}</p>
+                    <p><b>Amount:</b> {object.amount.teller}/{object.amount.noemer} per minute</p>
                 </div>
                 <div className='objectEditAndDelete'>
                     <div className='objectDelete'>

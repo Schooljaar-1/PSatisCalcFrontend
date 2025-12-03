@@ -1,3 +1,28 @@
+.createRecipeAmountRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.createRecipeAmountLabel {
+    display: flex;
+    align-items: center;
+    margin-right: 8px;
+}
+
+.createRecipeAmountInputs {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.createRecipeAmountDivider {
+    margin: 0 4px;
+}
+
+.createRecipePerMinute {
+    margin-left: 6px;
+}
 .createRecipeContainer{
     display: flex;
     flex-direction: column;
@@ -85,6 +110,7 @@
 }
 
 .createRecipeMainInfo{
+    align-items: center;
     position: relative;
     width: 98%;
     display: flex;
@@ -158,8 +184,8 @@
 }
 
 .createRecipeScrollablePartsWindow{
-    height: 20vh;
-    max-height: 20vh;
+    height: 17vh;
+    max-height: 17vh;
     width: 99%;
     background-color: #757575;
     border-radius: 8px; 
@@ -178,9 +204,40 @@
 
 .objectAdvancedDescriptionDivWoBorder{
     display: flex;
-    flex-direction: column;
-    width: 45%;
-    justify-content: center;
-    height: 85%;
-    margin-left: 0.5em;
+    width: 100%;
+    margin-right: 0.5em;
+    justify-content: space-between;
+}
+
+.createRecipeAddedParts .CreateRecipeWindowParts:hover {
+    background-color: #ffdddd; /* light red */
+}
+
+.createNewRecipeSubmitButton {
+    display: flex;
+    justify-content: flex-end; /* or center if you prefer */
+    margin-top: 1em;
+}
+
+.createNewRecipeSubmitButton{
+    margin-top: 1em;
+}
+
+.submitRecipeButton{
+    background-color: rgb(255, 225, 0);
+    color: black;
+    font-size: 2em;
+    border-radius: 8px;
+    border-width: 1px;
+    border-color: black;
+    width: 100%;
+}
+
+.createRecipePartAmountInput{
+    border-radius: 8px; 
+    margin-right: 0.5em;
+    width: 2vw;
+    outline: none; 
+    border: 1px solid #ccc;
+    height: inherit;
 }
