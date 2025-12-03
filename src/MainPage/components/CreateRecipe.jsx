@@ -7,7 +7,7 @@ function CreateRecipe(){
     // Setting URL for fetch
     const API_URL = import.meta.env.VITE_API_URL;
 
-    // ---------FETCHING DATA FROM BACKEND + STATUS CHECK-----------
+    // ---------FETCHING DATA FROM BACKEND + STATUS CHECK + SENDING CREATED RECIPE-----------
     const [recipeData, setRecipeData] = useState(null)
 
     function normalizeRecipe(obj) {
@@ -57,7 +57,40 @@ function CreateRecipe(){
     const handleErrorMessage = (error) => {
         alert(error);
     }
-    //--------------------------------------------------------------
+
+    // Funct to finally send newly created recipe to backend for storage inside JSON file
+    const handleNewRecipeSubmit = async () => {
+        const { Name, Version, Machine, Amount, Type, Image } = recipe;
+
+        // Check all required fields at once
+        if (!Name || !Version || !Machine || !Type || !Image || Amount == null) {
+            alert('Please fill in all fields before submitting (only parts may be empty).');
+            return;
+        }
+
+        try {
+            const res = await fetch(`${API_URL}/api/Recipe`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify(recipe)
+            });
+
+            if (!res.ok) {
+                const text = await res.text();
+                throw new Error(`Failed to submit recipe (${res.status}): ${text}`);
+            }
+
+            alert('Recipe submitted successfully.');
+            // Optionally refresh list
+            FetchData();
+        } catch (err) {
+            handleErrorMessage(err.message || 'Failed to submit recipe');
+        }
+    };
+    //---------------------------------------------------------------------------------------------------------------
 
     // Recipe to be send back to the backend and saved
     const [recipe, setRecipe] = useState(
@@ -180,21 +213,6 @@ function CreateRecipe(){
             Parts: prev.Parts.filter(p => p.PartName !== partNameToRemove)
         }));
     };
-
-    // Funct to finally send newly created recipe to backend for storage inside JSON file
-    const handleNewRecipeSubmit = () => {
-        const { Name, Version, Machine, Amount, Type, Image } = recipe;
-
-        // Check all required fields at once
-        if (!Name || !Version || !Machine || !Type || !Image || Amount == null) {
-            alert('Please fill in all fields before submitting (only parts may be empty).');
-            return;
-        }
-
-        // Submit recipe
-        console.log('Ready to submit recipe:', recipe);
-    };
-
 
     return(
         <>
@@ -333,7 +351,6 @@ function CreateRecipe(){
                         />
                     </div>
                     <div className='createRecipeScrollablePartsWindow'>
-                        {/* TODO: Add all parts with their name and image*/}
                         {parts}
                     </div>
                     <div className='createRecipeAddedParts'>
