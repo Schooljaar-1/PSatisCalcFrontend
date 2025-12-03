@@ -7,6 +7,35 @@ function CreateRecipe(){
     // Setting URL for fetch
     const API_URL = import.meta.env.VITE_API_URL;
 
+    // ---------FETCHING DATA FROM BACKEND + STATUS CHECK-----------
+    const [recipeData, setRecipeData] = useState(null)
+
+    function FetchData() {
+        fetch(`${API_URL}/api/Recipe`)
+            .then((res) => res.json()) 
+            .then((data) => {
+                if ("error" in data) {
+                    handleErrorMessage(data.error);
+                    return; // This stops further processing
+                }
+                // Process the data here instead of in another .then()
+                setRecipeData(data);
+            })
+            .catch((err) => {
+                handleErrorMessage(err.message || "Failed to fetch recipes");
+            });
+    }
+
+    useEffect(() => {
+        FetchData()
+    }, []);
+
+    const handleErrorMessage = (error) => {
+        alert(error);
+    }
+    //--------------------------------------------------------------
+
+    // Recipe to be send back to the backend and saved
     const [recipe, setRecipe] = useState(
         {
             name: "",
@@ -19,6 +48,7 @@ function CreateRecipe(){
         }
     );
 
+    // Coupling the user input to the recipe object that will be send to backend
     const HandleUserInput = ({ target }) => {
         const { name, value } = target;
 
@@ -28,7 +58,7 @@ function CreateRecipe(){
         }));
     };
 
-    // Generating search window items
+    // Generating search window items for recipe image selector
     let content;
     content = recipeImageNames
         .filter(object => !recipe.image || object.replace(/\s+/g, '').toLowerCase().includes(recipe.image.replace(/\s+/g, '').toLowerCase()))
@@ -48,6 +78,22 @@ function CreateRecipe(){
                 </div>
             );
         });
+    
+    // Generating search window items for parts selector
+    let parts;
+    if (recipeData === null || recipeData === undefined) {
+    parts = (
+        <div className="spinner"></div>
+    );
+    } 
+    else {
+        parts = recipeData
+            .map(object => {
+                return (
+                    <p>hi</p>
+                );
+            });
+    }
 
     return(
         <>
@@ -133,9 +179,23 @@ function CreateRecipe(){
                         </div>
                     </div>
                 </div>
-                {/* TODO: Implement same code as in recipe selector to be able to select older recipes as parts that are used by new one */}
                 <div className='createRecipePartsSelector'>
-                    <p>hi</p>
+                    <div className='CreateRecipePartName'>
+                        <p><b>Part name:</b></p>
+                        <input 
+                            className='createRecipePartInputs' 
+                            type="text" 
+                            placeholder='Enter recipe amounter p/m...' 
+                            // onChange={HandleUserPartsInput} 
+                            id="recipe-version" 
+                            name="amount" 
+                            // value={recipe.amount}
+                        />
+                    </div>
+                    <div className='createRecipeScrollablePartsWindow'>
+                        {/* TODO: Add all parts with their name and image*/}
+                        {parts}
+                    </div>
                 </div>
             </div>
         </>

@@ -137,3 +137,33 @@
 .createRecipeRightMenuItems{
     width: 50%;
 }
+
+.createRecipePartsSelector{
+    width: 98%;
+    margin: 0.5em 1em 1em 1em;
+}
+
+.CreateRecipePartName{
+    display: flex;
+    align-items: center;
+}
+
+.createRecipePartInputs{
+    width: 90%;
+    height: 1em;
+    border-radius: 8px; 
+    outline: none; 
+    border: 1px solid #ccc;
+    margin-left: 0.5em;
+}
+
+.createRecipeScrollablePartsWindow{
+    height: 10em;
+    max-height: 10em;
+    width: 99%;
+    background-color: #757575;
+    border-radius: 8px; 
+    margin-bottom: 1em;
+    margin-top: 1em;
+    overflow-y: auto;
+}
