@@ -80,6 +80,7 @@ function CreateRecipe(){
         });
     
     // Generating search window items for parts selector
+    const [userPart, setUserPart] = useState("")
     let parts;
     if (recipeData === null || recipeData === undefined) {
     parts = (
@@ -87,10 +88,33 @@ function CreateRecipe(){
     );
     } 
     else {
-        parts = recipeData
+        parts = recipeData.filter(object => userPart === null || object.name.toLowerCase().includes(userPart.toLowerCase()))
             .map(object => {
                 return (
-                    <p>hi</p>
+                    <div className='CreateRecipeWindowParts'>
+                        <div className='objectImageDiv' onClick={() => console.log(`Clicked item: ${object.name}`)}>
+                            <img 
+                                className='objectImage'
+                                src={`/recipeImages/${object.image}.png`}
+                                alt={object.name}
+                                onError={(e) => {
+                                    e.target.onerror = null;
+                                    e.target.src = '/recipeImages/unknown.png';
+                                }}
+                            />
+                        </div>
+                        <div className='objectDescriptionDiv' onClick={() => console.log(`Clicked item: ${object.name}`)}>
+                            <div className='objectBasicDescription'>
+                                <p><b>Name:</b> {object.name}</p>
+                                <p><b>Machine:</b> {object.machine}</p>
+                                <p><b>Version:</b> {object.version}</p>
+                            </div>
+                            <div className='objectAdvancedDescriptionDivWoBorder' onClick={() => console.log(`Clicked item: ${object.name}`)}>
+                                <p><b>Parts:</b> {object.parts.map(part => `${part.partName}(${part.amount.teller})`).join(', ')}</p>
+                                <p><b>Amount:</b> {object.amount}/min</p>
+                            </div>
+                        </div>
+                    </div>
                 );
             });
     }
@@ -185,11 +209,11 @@ function CreateRecipe(){
                         <input 
                             className='createRecipePartInputs' 
                             type="text" 
-                            placeholder='Enter recipe amounter p/m...' 
-                            // onChange={HandleUserPartsInput} 
+                            placeholder='Enter part name...' 
+                            onChange={e => setUserPart(e.target.value)} 
                             id="recipe-version" 
                             name="amount" 
-                            // value={recipe.amount}
+                            value={userPart}
                         />
                     </div>
                     <div className='createRecipeScrollablePartsWindow'>

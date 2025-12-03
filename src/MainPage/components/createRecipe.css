@@ -158,12 +158,29 @@
 }
 
 .createRecipeScrollablePartsWindow{
-    height: 10em;
-    max-height: 10em;
+    height: 20vh;
+    max-height: 20vh;
     width: 99%;
     background-color: #757575;
     border-radius: 8px; 
     margin-bottom: 1em;
     margin-top: 1em;
     overflow-y: auto;
+}
+
+.CreateRecipeWindowParts{
+    display: flex;
+    background-color: rgb(244, 244, 244);
+    margin: 0.7em;
+    padding: 0.2em;
+    border-radius: 8px;
+}
+
+.objectAdvancedDescriptionDivWoBorder{
+    display: flex;
+    flex-direction: column;
+    width: 45%;
+    justify-content: center;
+    height: 85%;
+    margin-left: 0.5em;
 }
