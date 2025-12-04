@@ -1,6 +1,7 @@
-import { useEffect, useState} from 'react';
 import recipeImageNames from '../../assets/recipeImageNames.json'
+import { useEffect, useState} from 'react';
 import '../../MainPage_Styling/global.css'
+import Select from 'react-select';
 import './createRecipe.css'
 
 function CreateRecipe(){
@@ -228,6 +229,21 @@ function CreateRecipe(){
         });
     };
 
+    // ----------------------MULTISELECT------------------------------
+    const machineOptions = [
+        { value: "Smelter", label: "Smelter" },
+        { value: "Constructor", label: "Constructor" },
+        { value: "Mining drill", label: "Mining drill" }
+    ];
+
+    const itemTypeOptions = [
+        { value: "item", label: "item" },
+        { value: "liquid", label: "liquid" },
+        { value: "Ore", label: "Ore" },
+        { value: "handheld", label: "handheld" },
+    ];
+    // ---------------------------------------------------------------
+
     return(
         <>
             <div className='createRecipeContainer'>
@@ -274,27 +290,35 @@ function CreateRecipe(){
                         </div>
                         <div className='createRecipeLeftMenuSingle'>
                             <p><b>Machine:</b></p>
-                            <input 
-                                className='createRecipeMenuInputs' 
-                                type="text" 
-                                placeholder='Enter recipe machine type...' 
-                                onChange={HandleUserInput} 
-                                id="recipe-machine" 
-                                name="Machine" 
-                                value={recipe.Machine}
-                            /> 
+                            <Select
+                                className='createRecipeMenuInputsSelect'
+                                id="recipe-machine"
+                                name="Machine"
+                                options={machineOptions}
+                                value={machineOptions.find(opt => opt.value === recipe.Machine) || null}
+                                onChange={(selected) => {
+                                    setRecipe(prev => ({
+                                        ...prev,
+                                        Machine: selected ? selected.value : ""
+                                    }));
+                                }}
+                            />
                         </div>
                         <div className='createRecipeLeftMenuSingle'>
                             <p><b>Type:</b></p>
-                            <input 
-                                className='createRecipeMenuInputs' 
-                                type="text" 
-                                placeholder='Enter recipe type...' 
-                                onChange={HandleUserInput} 
-                                id="recipe-type" 
-                                name="Type" 
-                                value={recipe.Type}
-                            /> 
+                            <Select
+                                className='createRecipeMenuInputsSelect'
+                                id="recipe-type"
+                                name="Type"
+                                options={itemTypeOptions}
+                                value={itemTypeOptions.find(opt => opt.value === recipe.Type) || null}
+                                onChange={(selected) => {
+                                    setRecipe(prev => ({
+                                        ...prev,
+                                        Type: selected ? selected.value : ""
+                                    }));
+                                }}
+                            />
                         </div>
                     </div>
                     <div className='createRecipeRightMenuItems'>

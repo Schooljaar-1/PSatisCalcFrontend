@@ -137,6 +137,7 @@
     width: 100%;
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
 .createRecipeMenuInputs{
@@ -145,6 +146,11 @@
     border-radius: 8px; 
     outline: none; 
     border: 1px solid #ccc;
+    margin-right: 0.5em;
+}
+
+.createRecipeMenuInputsSelect{
+    width: 70%;
     margin-right: 0.5em;
 }
 
