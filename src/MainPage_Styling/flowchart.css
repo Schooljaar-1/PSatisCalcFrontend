@@ -3,7 +3,15 @@
     flex: 1;
     flex-direction: row;
     margin: 1rem 1rem 1rem 0;
-    padding: 1rem;
+    padding: 0.7rem;
     background-color: #3d3d3d;
     border-radius: 0.5rem;
+}
+
+.SelectedRecipesList{
+    background-color: rgb(199, 199, 199);
+    color: rgb(40, 40, 40);
+    border-radius: 8px;
+    padding: 0.5em;
+    width: 15vw;
 }

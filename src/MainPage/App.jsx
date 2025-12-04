@@ -2,7 +2,7 @@ import { useState } from 'react'
 import Topbar from './Topbar.jsx'
 import Description  from './Description.jsx'
 import Recipes from './Recipes.jsx'
-import Flowchart from './Flowschart.jsx'
+import Flowchart from './Flowchart.jsx'
 import '../MainPage_Styling/app.css'
 
 function App() {

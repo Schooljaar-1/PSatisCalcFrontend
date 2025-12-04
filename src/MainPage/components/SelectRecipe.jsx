@@ -120,7 +120,6 @@ function SelectRecipe(){
                 </div>
                 <div className='objectEditAndDelete'>
                     <div className='objectDelete'>
-                        {/* TODO: make these buttons actually work, but make sure that it doesn't double click because the div is already onClick! *ALREADY FIXED DOUBLE CLICK WB06/08/25*/}
                         <button className='deleteButton' onClick={() => handleRemoveRecipeByName(object.name)}><b>DELETE</b></button>                    
                     </div>
                     <div className='objectEdit'>
