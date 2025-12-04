@@ -400,8 +400,9 @@ function CreateRecipe(){
                                 <div
                                     className='CreateRecipeWindowParts'
                                     key={part.PartName ?? index}
-                                    onClick={(e) => {
+                                    onContextMenu={(e) => {
                                         if (e.target.tagName !== 'INPUT') {
+                                            e.preventDefault();
                                             handleRemovePart(part.PartName);
                                         }
                                     }}

@@ -90,7 +90,6 @@ function SelectRecipe({ selectedRecipes, setSelectedRecipes}){
     
     let content;
 
-    // TODO: Use API status check to prevent infinite spinner border when no recipes are present. (No data + API online --> No recipes found)
     if (recipeData === null || recipeData === undefined) {
     content = (
         <div className="spinner"></div>
@@ -100,7 +99,6 @@ function SelectRecipe({ selectedRecipes, setSelectedRecipes}){
     // console.log(content);
     content = recipeData.filter(object =>userInput === null || object.name.toLowerCase().includes(userInput.toLowerCase()))
     
-    // TODO: the onclick things under here should add the recipe in an array to be shown at the flowchart div. From there amount can be chosen and also ofc be deselected. Try to see if you can get deselect to happen at right click
     .map(object => (
         <div className='objectMapping' key={object.name}>
             <div className='objectImageDiv' onClick={() => addRecipeToSelected(object)}>
