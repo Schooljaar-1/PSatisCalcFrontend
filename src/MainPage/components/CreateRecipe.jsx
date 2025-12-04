@@ -233,14 +233,15 @@ function CreateRecipe(){
     const machineOptions = [
         { value: "Smelter", label: "Smelter" },
         { value: "Constructor", label: "Constructor" },
+        { value: "Assembler", label: "Assembler" },
         { value: "Mining drill", label: "Mining drill" }
     ];
 
     const itemTypeOptions = [
-        { value: "item", label: "item" },
+        { value: "Item", label: "Item" },
         { value: "liquid", label: "liquid" },
         { value: "Ore", label: "Ore" },
-        { value: "handheld", label: "handheld" },
+        { value: "Handheld", label: "Handheld" },
     ];
     // ---------------------------------------------------------------
 
