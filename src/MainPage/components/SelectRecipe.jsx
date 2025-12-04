@@ -3,7 +3,7 @@ import '../../MainPage_Styling/global.css'
 import './selectRecipe.css'
 import mockData from './mockData.json'
 
-function SelectRecipe(){
+function SelectRecipe({ selectedRecipes, setSelectedRecipes}){
     // Setting URL for fetch
     const API_URL = import.meta.env.VITE_API_URL;
 
@@ -80,6 +80,12 @@ function SelectRecipe(){
             console.error("Network or server error:", error);
         }
     };
+
+    const addRecipeToSelected = (object) => {
+        if (!selectedRecipes.some(r => r.name === object.name)) {
+            setSelectedRecipes([...selectedRecipes, object]);
+        }
+    }
     // ---------ADDITIONAL FUNCTIONS--------------------------------
     
     let content;
@@ -97,7 +103,7 @@ function SelectRecipe(){
     // TODO: the onclick things under here should add the recipe in an array to be shown at the flowchart div. From there amount can be chosen and also ofc be deselected. Try to see if you can get deselect to happen at right click
     .map(object => (
         <div className='objectMapping' key={object.name}>
-            <div className='objectImageDiv' onClick={() => console.log(`Clicked item: ${object.name}`)}>
+            <div className='objectImageDiv' onClick={() => addRecipeToSelected(object)}>
                 <img 
                     className='objectImage'
                     src={`/recipeImages/${object.image}.png`}
@@ -108,13 +114,13 @@ function SelectRecipe(){
                     }}
                 />
             </div>
-            <div className='objectDescriptionDiv' onClick={() => console.log(`Clicked item: ${object.name}`)}>
+            <div className='objectDescriptionDiv' onClick={() => addRecipeToSelected(object)}>
                 <div className='objectBasicDescription'>
                     <p><b>Name:</b> {object.name}</p>
                     <p><b>Machine:</b> {object.machine}</p>
                     <p><b>Version:</b> {object.version}</p>
                 </div>
-                <div className='objectAdvancedDescriptionDiv' onClick={() => console.log(`Clicked item: ${object.name}`)}>
+                <div className='objectAdvancedDescriptionDiv' onClick={() => addRecipeToSelected(object)}>
                     <p><b>Parts:</b> {object.parts.map(part => `${part.partName}(${part.amount.teller}/${part.amount.noemer})`).join(', ')}</p>
                     <p><b>Amount:</b> {object.amount.teller}/{object.amount.noemer} per minute</p>
                 </div>

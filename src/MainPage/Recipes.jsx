@@ -5,7 +5,7 @@ import SelectRecipe from './components/SelectRecipe.jsx'
 import CreateRecipe from './components/CreateRecipe.jsx'
 
 
-function Recipes(){
+function Recipes({ selectedRecipes, setSelectedRecipes }){
     const [isOn, setIsOn] = useState(false);
     const buttonMessage = isOn ? "Go to SELECT" : "Go to CREATE";
 
@@ -24,7 +24,12 @@ function Recipes(){
                 <hr />
                 <div className='selectAndCreate'>
 
-                    {isOn ? <CreateRecipe /> : <SelectRecipe />}
+                    {isOn 
+                        ? <CreateRecipe /> 
+                        : <SelectRecipe 
+                            selectedRecipes={selectedRecipes}
+                            setSelectedRecipes={setSelectedRecipes}
+                        />}
 
                 </div>
             </div>

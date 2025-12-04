@@ -6,6 +6,8 @@ import Flowchart from './Flowchart.jsx'
 import '../MainPage_Styling/app.css'
 
 function App() {
+    const [selectedRecipes, setSelectedRecipes] = useState([]);
+
     return (
     <>
       <div className='mainPage'>
@@ -15,10 +17,13 @@ function App() {
         <div className='main'>
           <div className='sidebar'>
             <Description />
-            <Recipes />
+            <Recipes 
+              selectedRecipes={selectedRecipes}
+              setSelectedRecipes={setSelectedRecipes}
+            />
           </div>
           <div className='content'>
-            <Flowchart />
+            <Flowchart recipes={selectedRecipes}/>
           </div>
         </div>
       </div>
