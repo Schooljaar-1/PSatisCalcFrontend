@@ -241,3 +241,12 @@
     border: 1px solid #ccc;
     height: inherit;
 }
+
+.clearRecipeButton{
+    background-color: rgb(255, 119, 119);
+    margin-left: 1em;
+    color: black;
+    font-size: 2em;
+    border-width: 1px;
+    border-radius: 8px;
+}

@@ -48,13 +48,38 @@ function SelectRecipe(){
             setApiIsOnline(false);
         }
     }
-    APIStatusCheck();
+    useEffect(() => {
+        APIStatusCheck();
+    }, []);
     // ---------FETCHING DATA FROM BACKEND + STATUS CHECK-----------
 
     // ---------ADDITIONAL FUNCTIONS--------------------------------
     const handleUserInput = ({ target }) => {
         setUserInput(target.value)
     }
+
+    const handleRemoveRecipeByName = async (recipeName) => {
+        try {
+            const res = await fetch(`${API_URL}/api/Recipe/name/${recipeName}`, {
+                method: "DELETE"
+            });
+
+            if (!res.ok) {
+                const errorMessage = await res.text();
+                alert("Error deleting recipe:", errorMessage);
+                return;
+            }
+
+            const message = await res.text();
+            alert(message);
+            // Removing also from local array
+            setRecipeData((prev) => prev.filter(r => r.name !== recipeName));
+
+        } 
+        catch (error) {
+            console.error("Network or server error:", error);
+        }
+    };
     // ---------ADDITIONAL FUNCTIONS--------------------------------
     
     let content;
@@ -96,7 +121,7 @@ function SelectRecipe(){
                 <div className='objectEditAndDelete'>
                     <div className='objectDelete'>
                         {/* TODO: make these buttons actually work, but make sure that it doesn't double click because the div is already onClick! *ALREADY FIXED DOUBLE CLICK WB06/08/25*/}
-                        <button className='deleteButton'><b>DELETE</b></button>                    
+                        <button className='deleteButton' onClick={() => handleRemoveRecipeByName(object.name)}><b>DELETE</b></button>                    
                     </div>
                     <div className='objectEdit'>
                         {/* TODO: Make edit function into backend */}

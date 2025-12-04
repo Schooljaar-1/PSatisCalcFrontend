@@ -84,8 +84,9 @@ function CreateRecipe(){
             }
 
             alert('Recipe submitted successfully.');
-            // Optionally refresh list
             FetchData();
+            resetRecipe();
+
         } catch (err) {
             handleErrorMessage(err.message || 'Failed to submit recipe');
         }
@@ -212,6 +213,19 @@ function CreateRecipe(){
             ...prev,
             Parts: prev.Parts.filter(p => p.PartName !== partNameToRemove)
         }));
+    };
+
+    // Function to clear our recipe
+    const resetRecipe = () => {
+        setRecipe({
+            Name: "",
+            Version: "",
+            Machine: "",
+            Amount: { Teller: 0, Noemer: 1 },
+            Type: "",
+            Image: "",
+            Parts: []
+        });
     };
 
     return(
@@ -416,6 +430,9 @@ function CreateRecipe(){
                     <div className='createNewRecipeSubmitButton'>
                         <button className='submitRecipeButton' onClick={handleNewRecipeSubmit}>
                             Submit new recipe
+                        </button>
+                        <button className='clearRecipeButton' onClick={resetRecipe}>
+                            Clear
                         </button>
                     </div>
                 </div>
