@@ -98,7 +98,7 @@ function CreateRecipe(){
     const [recipe, setRecipe] = useState(
         {
             Name: "",
-            Version: "",
+            Version: "default",
             Machine: "",
             Amount: {
                 Teller: 0,

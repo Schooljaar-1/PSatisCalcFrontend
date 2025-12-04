@@ -21,7 +21,7 @@ function Flowchart({ recipes }){
 
             </div>
             <div className='FlowchartArea'>
-
+                {/* TODO: Make this an imported jsx file for better seperation of files. This way it'll remain clean */}
             </div>
         </div>
         </>
