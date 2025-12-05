@@ -23,7 +23,10 @@ function App() {
             />
           </div>
           <div className='content'>
-            <Flowchart recipes={selectedRecipes}/>
+            <Flowchart 
+              recipes={selectedRecipes}
+              setRecipes={setSelectedRecipes}
+            />
           </div>
         </div>
       </div>

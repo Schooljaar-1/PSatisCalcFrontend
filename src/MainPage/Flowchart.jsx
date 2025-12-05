@@ -2,13 +2,22 @@ import '../MainPage_Styling/global.css'
 import '../MainPage_Styling/flowchart.css'
 import FlowCanvas from './components/ReactFlow.jsx';
 
-function Flowchart({ recipes }){
+function Flowchart({ recipes, setRecipes }){
+
+    // Function to remove a part
+    const handleRemovePart = (name, version) => {
+        setRecipes(prev => prev.filter(part => !(part.name === name && part.version === version)));
+    }
 
     // Mapping to add selected parts into the list on the left of flowchart area
     let selectedParts;
     selectedParts = recipes.map(part => {
         return(
-            <div className='singleSelectedPart' key={`${part.name} ${part.version}`}>
+            <div className='singleSelectedPart' key={`${part.name} ${part.version}`} onContextMenu={(e) => {
+                e.preventDefault(); 
+                console.log("cheesy")
+                handleRemovePart(part.name, part.version);
+            }}>
                 <div className='selectPartTopHalf'>
                     <div className='partImageDiv' onClick={() => addRecipeToSelected(object)}>
                         <img 
