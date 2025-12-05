@@ -230,13 +230,15 @@
 }
 
 .submitRecipeButton{
-    background-color: rgb(255, 225, 0);
+    background-color: rgb(255, 191, 0);
     color: black;
-    font-size: 2em;
+    font-size: 1.5em;
+    border: none;
     border-radius: 8px;
     border-width: 1px;
     border-color: black;
     width: 100%;
+    cursor: pointer;
 }
 
 .createRecipePartAmountInput{
@@ -251,9 +253,11 @@
 
 .clearRecipeButton{
     background-color: rgb(255, 119, 119);
+    border: none;
     margin-left: 1em;
     color: black;
-    font-size: 2em;
+    font-size: 1.5em;
     border-width: 1px;
     border-radius: 8px;
+    cursor: pointer;
 }

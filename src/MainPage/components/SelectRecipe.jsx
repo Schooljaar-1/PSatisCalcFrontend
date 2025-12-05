@@ -58,9 +58,9 @@ function SelectRecipe({ selectedRecipes, setSelectedRecipes}){
         setUserInput(target.value)
     }
 
-    const handleRemoveRecipeByName = async (recipeName) => {
+    const handleRemoveRecipeByName = async (recipeName, recipeVersion) => {
         try {
-            const res = await fetch(`${API_URL}/api/Recipe/name/${recipeName}`, {
+            const res = await fetch(`${API_URL}/api/Recipe/name/${encodeURIComponent(recipeName)}/version/${encodeURIComponent(recipeVersion)}`, {
                 method: "DELETE"
             });
 
@@ -72,8 +72,8 @@ function SelectRecipe({ selectedRecipes, setSelectedRecipes}){
 
             const message = await res.text();
             alert(message);
-            // Removing also from local array
-            setRecipeData((prev) => prev.filter(r => r.name !== recipeName));
+            // Removing also from local array (match both name and version)
+            setRecipeData((prev) => prev.filter(r => !(r.name === recipeName && r.version === recipeVersion)));
 
         } 
         catch (error) {
@@ -124,7 +124,7 @@ function SelectRecipe({ selectedRecipes, setSelectedRecipes}){
                 </div>
                 <div className='objectEditAndDelete'>
                     <div className='objectDelete'>
-                        <button className='deleteButton' onClick={() => handleRemoveRecipeByName(object.name)}><b>DELETE</b></button>                    
+                        <button className='deleteButton' onClick={() => handleRemoveRecipeByName(object.name, object.version)}><b>DELETE</b></button>                    
                     </div>
                     <div className='objectEdit'>
                         {/* TODO: Make edit function into backend */}

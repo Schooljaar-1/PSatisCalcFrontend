@@ -9,6 +9,7 @@
 .chart{
     width: 100%;
     height: 100%;
+    border-radius: 8px;
     background-color: rgb(42, 42, 42);
 }
 

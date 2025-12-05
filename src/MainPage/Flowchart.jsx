@@ -68,7 +68,8 @@ function Flowchart({ recipes, setRecipes }){
                     {selectedParts}
                 </div>
                 <div className='selectedPartsActionButtons'>
-
+                    <button className='calculateButton'><b>Calculate</b></button>
+                    <button className='clearButton' onClick={() => setRecipes([])}><b>Clear</b></button>
                 </div>
             </div>
                 <div className='flowchartArea'>

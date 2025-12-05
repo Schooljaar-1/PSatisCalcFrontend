@@ -455,10 +455,10 @@ function CreateRecipe(){
                     </div>
                     <div className='createNewRecipeSubmitButton'>
                         <button className='submitRecipeButton' onClick={handleNewRecipeSubmit}>
-                            Submit new recipe
+                            <b>Submit new recipe</b>
                         </button>
                         <button className='clearRecipeButton' onClick={resetRecipe}>
-                            Clear
+                            <b>Clear</b>
                         </button>
                     </div>
                 </div>
