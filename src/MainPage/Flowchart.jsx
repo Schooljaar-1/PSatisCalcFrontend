@@ -1,5 +1,6 @@
 import '../MainPage_Styling/global.css'
 import '../MainPage_Styling/flowchart.css'
+import FlowCanvas from './components/ReactFlow.jsx';
 
 function Flowchart({ recipes }){
 
@@ -61,8 +62,8 @@ function Flowchart({ recipes }){
 
                 </div>
             </div>
-            <div className='FlowchartArea'>
-                {/* TODO: Make this an imported jsx file for better seperation of files. This way it'll remain clean */}
+                <div className='flowchartArea'>
+                <FlowCanvas />
             </div>
         </div>
         </>
@@ -70,13 +71,3 @@ function Flowchart({ recipes }){
 };
 
 export default Flowchart
-
-
-{/* TODO: Map the incoming recipes with their image, name and version. Then also add a field where desired amount per min can be specified
-{recipes && recipes.length > 0 ? (
-    recipes.map((recipe) => (
-        <p key={recipe.name}>{recipe.name}</p> // show recipe names
-    ))
-) : (
-    <p>No recipes selected</p>
-)} */}
