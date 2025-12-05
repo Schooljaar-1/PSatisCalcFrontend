@@ -8,10 +8,51 @@
     border-radius: 0.5rem;
 }
 
-.SelectedRecipesList{
-    background-color: rgb(199, 199, 199);
-    color: rgb(40, 40, 40);
+.selectedRecipesList{
+    background-color: none;
+    color: rgb(255, 255, 255);
     border-radius: 8px;
     padding: 0.5em;
     width: 15vw;
+    border-right: 4px solid rgb(0, 0, 0);
+}
+
+.singleSelectedPart{
+    background-color: rgb(223, 223, 223);
+    border-radius: 8px;
+    color: black;
+    margin-bottom: 0.5em;
+    font-family: "Google Sans Code", monospace;
+}
+
+.selectPartTopHalf{
+    display: flex;
+}
+
+.partImageDiv{
+    display: flex;
+    width: 25%;
+    justify-content: center;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    border-right: 2px solid rgb(100, 100, 100);
+}
+
+.partImage{
+    width: 50%;
+    height: auto;
+    object-fit: contain; 
+}
+
+.partBasicDescription{
+    margin-left: 0.5em;
+}
+
+.selectedPartBottomHalf{
+    width: 90%;
+    justify-content: center;
+    margin: 0 auto;
+    display: flex;
+    border-top: 2px solid rgb(100, 100, 100);
+
 }

@@ -242,6 +242,7 @@
 .createRecipePartAmountInput{
     border-radius: 8px; 
     margin-right: 0.5em;
+    margin-left: 0.5em;
     width: 2vw;
     outline: none; 
     border: 1px solid #ccc;
