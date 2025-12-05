@@ -1,17 +1,20 @@
 import '../../MainPage_Styling/global.css'
 import './reactFlow.css'
 
+import ReactFlow, { Controls, Background, useNodesState, useEdgesState, addEdge } from 'reactflow';
 import React, { useCallback } from 'react';
-import ReactFlow,
-  { MiniMap, Controls, Background, useNodesState, useEdgesState, addEdge }
-  from 'reactflow';
 import 'reactflow/dist/style.css';
+import SideNode from './NodesAndEdges';
+
+const nodeTypes = {
+  side: SideNode,
+};
 
 // Canvas component for React Flow. Avoid name clash with library default export.
 function FlowCanvas() {
   const initialNodes = [
-    { id: '1', position: { x: 0, y: 0 }, data: { label: '1' } },
-    { id: '2', position: { x: 200, y: 200 }, data: { label: '2' } },
+    { id: '1', type: 'side', position: { x: 0, y: 0 }, data: { label: 'Iron Ore', image: 'IronNew' } },
+    { id: '2', type: 'side', position: { x: 200, y: 0 }, data: { label: 'Iron Ingot', image: 'IronIngot' } },
   ];
 
   const initialEdges = [{ id: 'e1-2', source: '1', target: '2' }];
@@ -29,9 +32,9 @@ function FlowCanvas() {
         onNodesChange={onNodesChange}
         onEdgesChange={onEdgesChange}
         onConnect={onConnect}
+        nodeTypes={nodeTypes}
         fitView
       >
-        <MiniMap />
         <Controls />
         <Background />
       </ReactFlow>
