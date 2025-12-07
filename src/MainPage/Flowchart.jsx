@@ -15,7 +15,6 @@ function Flowchart({ recipes, setRecipes }){
         return(
             <div className='singleSelectedPart' key={`${part.name} ${part.version}`} onContextMenu={(e) => {
                 e.preventDefault(); 
-                console.log("cheesy")
                 handleRemovePart(part.name, part.version);
             }}>
                 <div className='selectPartTopHalf'>
@@ -40,6 +39,11 @@ function Flowchart({ recipes, setRecipes }){
                 </div>
                 <div className='selectedPartBottomHalf'>
                     <b>Amount: </b>
+                    <input 
+                        className='createRecipePartAmountInput' 
+                        type="number" 
+                        placeholder='G'
+                    />
                     <input 
                         className='createRecipePartAmountInput' 
                         type="number" 
