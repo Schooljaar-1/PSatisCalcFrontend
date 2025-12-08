@@ -69,9 +69,9 @@ function Flowchart({ recipes, setRecipes }){
                 <div>
                     <h1>Selected Recipes</h1>
                     <div style={{ borderBottom: '2px solid white', width: '100%', margin: '0.2em 0 1em 0' }}></div>
-                </div>
-                <div className='selectedPartsList'>
-                    {selectedParts}
+                    <div className='selectedPartsList'>
+                        {selectedParts}
+                    </div>
                 </div>
                 <div className='selectedPartsActionButtons'>
                     <button className='calculateButton'><b>Calculate</b></button>
