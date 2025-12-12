@@ -6,7 +6,7 @@ export default function SideNode({ data }) {
       <Handle type="target" position={Position.Left} />
       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
         <img
-          src={`/recipeImages/${data.image}.png`}
+          src={`/machineImages/${data.image}.png`}
           alt={data.label}
           style={{ width: 32, height: 32, objectFit: 'contain' }}
           onError={e => { e.target.onerror = null; e.target.src = '/recipeImages/unknown.png'; }}

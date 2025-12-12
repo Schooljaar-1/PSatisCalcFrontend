@@ -82,7 +82,7 @@ function SelectRecipe({ selectedRecipes, setSelectedRecipes}){
     };
 
     const addRecipeToSelected = (object) => {
-        if (!selectedRecipes.some(r => r.name === object.name)) {
+        if (!selectedRecipes.some(r => r.name === object.name && r.version === object.version)) {
             setSelectedRecipes([...selectedRecipes, object]);
         }
     }

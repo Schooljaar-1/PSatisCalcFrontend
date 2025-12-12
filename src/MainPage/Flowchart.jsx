@@ -3,6 +3,7 @@ import '../MainPage_Styling/flowchart.css'
 import FlowCanvas from './components/ReactFlow.jsx';
 
 function Flowchart({ recipes, setRecipes }){
+    // TODO: For sending wanted recipes and their amounts to backend, MR gpt recommends sending the recipes list as is (shared in props) and add the amounts from this code using object map like: const amounts = {name_version: amount{x:1, y:2, z:3}, ....}
 
     // Function to remove a part
     const handleRemovePart = (name, version) => {
@@ -76,9 +77,16 @@ function Flowchart({ recipes, setRecipes }){
                     <button className='clearButton' onClick={() => setRecipes([])}><b>Clear</b></button>
                 </div>
             </div>
+            <div style={{display: 'flex', flexDirection: 'column', width: '100%', height: '100%'}}>
                 <div className='flowchartArea'>
-                <FlowCanvas />
+                    <FlowCanvas />
+                </div>
+                {/* TODO: Here will come settings like Miner: mk1,mk2,mk3. ALso maybe where the total calculated power is shown, etc. */}
+                <div className='controlDashBoard'>
+                    <p>kaas</p>
+                </div>
             </div>
+
         </div>
         </>
     )
