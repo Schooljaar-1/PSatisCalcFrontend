@@ -7,15 +7,20 @@
     background-color: #3d3d3d;
     border-radius: 0.5rem;
     justify-content: space-between;
+    height: inherit;
 }
 
 .selectedRecipesList{
+    display: flex;
+    flex-direction: column;
     background-color: none;
     color: rgb(255, 255, 255);
     border-radius: 8px;
     padding: 0.5em;
     width: 25vw;
     border-right: 4px solid rgb(0, 0, 0);
+    height: inherit;
+    justify-content: space-between;
 }
 
 .singleSelectedPart{
@@ -27,7 +32,7 @@
 }
 
 .selectedPartsList{
-    height: 84vh;
+    height: 60vh;
     max-height: 84vh;
     overflow-y: auto;
 }
