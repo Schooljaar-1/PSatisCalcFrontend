@@ -23,6 +23,17 @@
     font-family: "Google Sans Code", monospace;
 }
 
+.side-node__label {
+    line-height: 1.1;
+}
+
+.side-node__sublabel {
+    margin-top: 2px;
+    font-size: 12px;
+    line-height: 1.1;
+    opacity: 0.75;
+}
+
 /* Ensure default node labels remain visible even with global white text */
 .react-flow__node, .react-flow__node-default {
     color: #222222;

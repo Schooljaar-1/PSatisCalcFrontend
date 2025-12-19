@@ -9,9 +9,21 @@ export default function SideNode({ data }) {
           src={`/machineImages/${data.image}.png`}
           alt={data.label}
           style={{ width: 32, height: 32, objectFit: 'contain' }}
-          onError={e => { e.target.onerror = null; e.target.src = '/recipeImages/unknown.png'; }}
+          onError={(e) => {
+            const recipeFallback = `/recipeImages/${data.image}.png`;
+            const unknownFallback = '/recipeImages/unknown.png';
+
+            if (e.target.src.includes(recipeFallback)) {
+              e.target.src = unknownFallback;
+            } else {
+              e.target.src = recipeFallback;
+            }
+          }}
         />
-        <span>{data.label}</span>
+        <div className="side-node__label">{data.label}</div>
+        {data.subLabel ? (
+          <div className="side-node__sublabel">{data.subLabel}</div>
+        ) : null}
       </div>
       <Handle type="source" position={Position.Right} />
     </div>
