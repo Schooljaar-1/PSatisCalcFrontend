@@ -45,7 +45,7 @@ function Flowchart({ recipes, setRecipes }){
                 recipe: part, 
                 amount: {
                     g: Number(userAmount.g) || 0,
-                    t: Number(userAmount.t) || 0,
+                    t: Number(userAmount.t) || 1,
                     n: Number(userAmount.n) || 1  
                 }
             };
@@ -59,7 +59,7 @@ function Flowchart({ recipes, setRecipes }){
     let selectedParts;
     selectedParts = recipes.map(part => {
         const key = `${part.name}_${part.version}`;
-        const currentAmount = amounts[key] || { g: '', t: '', n: ''}
+        const currentAmount = amounts[key] || { g: '', t: '1', n: '1'}
 
         return(
             <div className='singleSelectedPart' key={`${part.name} ${part.version}`} onContextMenu={(e) => {
