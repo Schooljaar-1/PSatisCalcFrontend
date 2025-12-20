@@ -6,6 +6,12 @@ import FlowCanvas from './components/ReactFlow.jsx';
 function Flowchart({ recipes, setRecipes }){
     // The amount of items a user wants
     const [amounts, setAmounts] = useState({});
+    // API base URL from env
+    const API_URL = import.meta.env.VITE_API_URL;
+
+    const handleErrorMessage = (error) => {
+        alert(error);
+    }
 
     // Function add g,t,n to object
     const handleAmountChange = (name, version, field, value) => {
@@ -15,8 +21,8 @@ function Flowchart({ recipes, setRecipes }){
             [key]: {
                 ...prev[key],
                     g: prev[key]?.g ?? '',
-                    t: prev[key]?.t ?? '',
-                    n: prev[key]?.n ?? '',
+                    t: prev[key]?.t ?? '1',
+                    n: prev[key]?.n ?? '1',
                     [field]: value
             }
         }));
@@ -36,23 +42,43 @@ function Flowchart({ recipes, setRecipes }){
 
     // Function combining parts and amounts
     const handleSubmit = () => {
-        const payload = recipes.map(part => {
+        const items = recipes.map(part => {
             const key = `${part.name}_${part.version}`;
-            
-            const userAmount = amounts[key] || { g: 0, t: 0, n: 1 };
+
+            const userAmount = amounts[key] || { g: 0, t: 1, n: 1 };
 
             return {
-                recipe: part, 
+                recipe: part,
                 amount: {
-                    g: Number(userAmount.g) || 0,
-                    t: Number(userAmount.t) || 1,
-                    n: Number(userAmount.n) || 1  
+                    integer: Number(userAmount.g) || 0,
+                    fraction: {
+                        teller: Number(userAmount.t) || 1,
+                        noemer: Number(userAmount.n) || 1
+                    }
                 }
             };
         });
 
-        // TODO: Call backend function
-        console.log("Combined Payload for Backend:", payload);
+        console.log("Combined Payload for Backend (items):", items);
+
+        fetch(`${API_URL}/api/Flowchart`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ items })
+        })
+        .then((res) => res.json())
+        .then((data) => {
+            if ("error" in data) {
+                handleErrorMessage(data.error);
+                return;
+            }
+            console.log('Flowchart API response:', data);
+        })
+        .catch((err) => {
+            handleErrorMessage(err.message || 'Failed to send flowchart payload');
+        });
     };
 
     // Mapping to add selected parts into the list on the left of flowchart area
