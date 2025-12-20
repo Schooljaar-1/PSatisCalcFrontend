@@ -1,18 +1,66 @@
 import '../MainPage_Styling/global.css'
 import '../MainPage_Styling/flowchart.css'
+import { useEffect, useState} from 'react';
 import FlowCanvas from './components/ReactFlow.jsx';
 
 function Flowchart({ recipes, setRecipes }){
-    // TODO: For sending wanted recipes and their amounts to backend, MR gpt recommends sending the recipes list as is (shared in props) and add the amounts from this code using object map like: const amounts = {name_version: amount{x:1, y:2, z:3}, ....}
+    // The amount of items a user wants
+    const [amounts, setAmounts] = useState({});
+
+    // Function add g,t,n to object
+    const handleAmountChange = (name, version, field, value) => {
+        const key = `${name}_${version}`;
+        setAmounts(prev => ({
+            ...prev,
+            [key]: {
+                ...prev[key],
+                    g: prev[key]?.g ?? '',
+                    t: prev[key]?.t ?? '',
+                    n: prev[key]?.n ?? '',
+                    [field]: value
+            }
+        }));
+    };
 
     // Function to remove a part
     const handleRemovePart = (name, version) => {
         setRecipes(prev => prev.filter(part => !(part.name === name && part.version === version)));
+
+        const key = `${name}_${version}`;
+        setAmounts(prev => {
+            const updatedAmounts = { ...prev };
+            delete updatedAmounts[key]; // This deletes the specific entry for this recipe
+            return updatedAmounts;
+        });
     }
+
+    // Function combining parts and amounts
+    const handleSubmit = () => {
+        const payload = recipes.map(part => {
+            const key = `${part.name}_${part.version}`;
+            
+            const userAmount = amounts[key] || { g: 0, t: 0, n: 1 };
+
+            return {
+                recipe: part, 
+                amount: {
+                    g: Number(userAmount.g) || 0,
+                    t: Number(userAmount.t) || 0,
+                    n: Number(userAmount.n) || 1  
+                }
+            };
+        });
+
+        // TODO: Call backend function
+        console.log("Combined Payload for Backend:", payload);
+    };
 
     // Mapping to add selected parts into the list on the left of flowchart area
     let selectedParts;
     selectedParts = recipes.map(part => {
+        const key = `${part.name}_${part.version}`;
+        const currentAmount = amounts[key] || { g: '', t: '', n: ''}
+
         return(
             <div className='singleSelectedPart' key={`${part.name} ${part.version}`} onContextMenu={(e) => {
                 e.preventDefault(); 
@@ -44,17 +92,23 @@ function Flowchart({ recipes, setRecipes }){
                         className='createRecipePartAmountInput' 
                         type="number" 
                         placeholder='G'
+                        value={currentAmount.g}
+                        onChange={(e) => handleAmountChange(part.name, part.version, 'g', e.target.value)} 
                     />
                     <input 
                         className='createRecipePartAmountInput' 
                         type="number" 
                         placeholder='T'
+                        value={currentAmount.t}
+                        onChange={(e) => handleAmountChange(part.name, part.version, 't', e.target.value)} 
                     />
                     <p>/ </p>
                     <input 
                         className='createRecipePartAmountInput' 
                         type="number" 
                         placeholder='N'
+                        value={currentAmount.n}
+                        onChange={(e) => handleAmountChange(part.name, part.version, 'n', e.target.value)} 
                     />
                     <p>Per minute</p>
                 </div>
@@ -75,8 +129,8 @@ function Flowchart({ recipes, setRecipes }){
                     </div>
                 </div>
                 <div className='selectedPartsActionButtons'>
-                    <button className='calculateButton'><b>Calculate</b></button>
-                    <button className='clearButton' onClick={() => setRecipes([])}><b>Clear</b></button>
+                    <button className='calculateButton' onClick={handleSubmit}><b>Calculate</b></button>
+                    <button className='clearButton' onClick={() => { setRecipes([]); setAmounts({}); } }><b>Clear</b></button>
                 </div>
             </div>
             <div style={{display: 'flex', flexDirection: 'column', width: '100%', height: '100%'}}>
