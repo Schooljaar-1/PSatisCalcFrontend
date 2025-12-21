@@ -2,7 +2,7 @@ import '../../MainPage_Styling/global.css'
 import './reactFlow.css'
 
 import ReactFlow, { Controls, Background, useNodesState, useEdgesState, addEdge, MarkerType } from 'reactflow';
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import 'reactflow/dist/style.css';
 import SideNode from './NodesAndEdges';
 
@@ -29,25 +29,41 @@ const DEFAULT_EDGE_OPTIONS = {
   labelBgBorderRadius: 0,
 };
 
-const INITIAL_NODES = [
-  { id: '1', type: 'side', position: { x: 0, y: 0 }, data: { label: 'Miner', subLabel: 'x', image: 'Miner' } },
-  { id: '2', type: 'side', position: { x: 200, y: 0 }, data: { label: 'Smelter', subLabel: 'x0.34', image: 'Smelter' } },
-  { id: '3', type: 'side', position: { x: 400, y: 0 }, data: { label: 'Iron Ingot', subLabel: '10 per minute', image: 'IronIngot' } },
-];
-
-const INITIAL_EDGES = [
-  { id: 'e1-2', source: '1', target: '2', label: "10 iron ore per minute" },
-  { id: 'e2-3', source: '2', target: '3', label: "10 ingots per minute" }
-];
-
-function FlowCanvas() {
-  const [nodes, , onNodesChange] = useNodesState(INITIAL_NODES);
-  const [edges, setEdges, onEdgesChange] = useEdgesState(INITIAL_EDGES);
+function FlowCanvas({ flowData }) {
+  const [nodes, setNodes, onNodesChange] = useNodesState([]);
+  const [edges, setEdges, onEdgesChange] = useEdgesState([]);
 
   const onConnect = useCallback(
     (params) => setEdges((eds) => addEdge(params, eds)),
     [setEdges]
   );
+
+  useEffect(() => {
+    if (!flowData) return;
+    console.log('Incoming flowdata:', flowData);
+
+    // Map incoming flowData nodes to reactflow node format
+    if (Array.isArray(flowData.nodes)) {
+      const mapped = flowData.nodes.map((n) => ({
+        id: n.id,
+        position: n.position || { x: 0, y: 0 },
+        type: n.nodeData?.image ? 'side' : undefined,
+        data: n.nodeData || n.data || {}
+      }));
+      setNodes(mapped);
+    }
+
+    // Map incoming flowData edges to reactflow edge format
+    if (Array.isArray(flowData.edges)) {
+      const mappedEdges = flowData.edges.map((e, idx) => ({
+        id: e.id || `e-${idx}`,
+        source: e.source,
+        target: e.target,
+        label: e.label || e.text || '',
+      }));
+      setEdges(mappedEdges);
+    }
+  }, [flowData, setNodes, setEdges]);
 
   return (
     <div className='chart'>

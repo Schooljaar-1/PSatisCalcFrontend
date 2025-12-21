@@ -6,6 +6,7 @@ import FlowCanvas from './components/ReactFlow.jsx';
 function Flowchart({ recipes, setRecipes }){
     // The amount of items a user wants
     const [amounts, setAmounts] = useState({});
+    const [flowData, setFlowData] = useState(null);
     // API base URL from env
     const API_URL = import.meta.env.VITE_API_URL;
 
@@ -21,8 +22,8 @@ function Flowchart({ recipes, setRecipes }){
             [key]: {
                 ...prev[key],
                     g: prev[key]?.g ?? '',
-                    t: prev[key]?.t ?? '1',
-                    n: prev[key]?.n ?? '1',
+                    t: prev[key]?.t ?? '',
+                    n: prev[key]?.n ?? '',
                     [field]: value
             }
         }));
@@ -45,14 +46,14 @@ function Flowchart({ recipes, setRecipes }){
         const items = recipes.map(part => {
             const key = `${part.name}_${part.version}`;
 
-            const userAmount = amounts[key] || { g: 0, t: 1, n: 1 };
+            const userAmount = amounts[key] || { g: 0, t: 0, n: 1 };
 
             return {
                 recipe: part,
                 amount: {
                     integer: Number(userAmount.g) || 0,
                     fraction: {
-                        teller: Number(userAmount.t) || 1,
+                        teller: Number(userAmount.t) || 0,
                         noemer: Number(userAmount.n) || 1
                     }
                 }
@@ -63,18 +64,24 @@ function Flowchart({ recipes, setRecipes }){
 
         fetch(`${API_URL}/api/Flowchart`, {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
+            headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ items })
         })
-        .then((res) => res.json())
+        .then(async (res) => {
+            const text = await res.text(); 
+            try {
+                return JSON.parse(text); 
+            } catch {
+                return { error: text }; 
+            }
+        })
         .then((data) => {
             if ("error" in data) {
                 handleErrorMessage(data.error);
                 return;
             }
-            console.log('Flowchart API response:', data);
+            setFlowData(data);
+            // console.log('Flowchart API response:', data);
         })
         .catch((err) => {
             handleErrorMessage(err.message || 'Failed to send flowchart payload');
@@ -85,7 +92,7 @@ function Flowchart({ recipes, setRecipes }){
     let selectedParts;
     selectedParts = recipes.map(part => {
         const key = `${part.name}_${part.version}`;
-        const currentAmount = amounts[key] || { g: '', t: '1', n: '1'}
+        const currentAmount = amounts[key] || { g: '', t: '0', n: '1'}
 
         return(
             <div className='singleSelectedPart' key={`${part.name} ${part.version}`} onContextMenu={(e) => {
@@ -161,7 +168,7 @@ function Flowchart({ recipes, setRecipes }){
             </div>
             <div style={{display: 'flex', flexDirection: 'column', width: '100%', height: '100%'}}>
                 <div className='flowchartArea'>
-                    <FlowCanvas />
+                    <FlowCanvas flowData={flowData} />
                 </div>
                 {/* TODO: Here will come settings like Miner: mk1,mk2,mk3. ALso maybe where the total calculated power is shown, etc. */}
                 <div className='controlDashBoard'>
