@@ -240,8 +240,8 @@ function CreateRecipe(){
     const itemTypeOptions = [
         { value: "Item", label: "Item" },
         { value: "liquid", label: "liquid" },
-        { value: "Ore", label: "Ore" },
-        { value: "Handheld", label: "Handheld" },
+        { value: "ore", label: "ore" },
+        { value: "handheld", label: "handheld" },
     ];
     // ---------------------------------------------------------------
 

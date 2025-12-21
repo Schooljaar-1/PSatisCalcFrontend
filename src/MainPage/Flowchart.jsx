@@ -163,7 +163,7 @@ function Flowchart({ recipes, setRecipes }){
                 </div>
                 <div className='selectedPartsActionButtons'>
                     <button className='calculateButton' onClick={handleSubmit}><b>Calculate</b></button>
-                    <button className='clearButton' onClick={() => { setRecipes([]); setAmounts({}); } }><b>Clear</b></button>
+                    <button className='clearButton' onClick={() => { setRecipes([]); setAmounts({}); setFlowData(null); } }><b>Clear</b></button>
                 </div>
             </div>
             <div style={{display: 'flex', flexDirection: 'column', width: '100%', height: '100%'}}>

@@ -39,7 +39,20 @@ function FlowCanvas({ flowData }) {
   );
 
   useEffect(() => {
-    if (!flowData) return;
+    // If flowData is explicitly cleared, reset canvas
+    if (flowData == null) {
+      setNodes([]);
+      setEdges([]);
+      return;
+    }
+
+    // If caller passed an empty array (was used before), treat as clear
+    if (Array.isArray(flowData) && flowData.length === 0) {
+      setNodes([]);
+      setEdges([]);
+      return;
+    }
+
     console.log('Incoming flowdata:', flowData);
 
     // Map incoming flowData nodes to reactflow node format
