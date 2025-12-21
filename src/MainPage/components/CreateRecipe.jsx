@@ -234,7 +234,11 @@ function CreateRecipe(){
         { value: "Smelter", label: "Smelter" },
         { value: "Constructor", label: "Constructor" },
         { value: "Assembler", label: "Assembler" },
-        { value: "Mining drill", label: "Mining drill" }
+        { value: "Foundry", label: "Foundry" },
+        { value: "Manufacturer", label: "Manufacturer" },
+        { value: "Refinery", label: "Refinery" },
+        { value: "Blender", label: "Blender" },
+        { value: "Packager", label: "Packager" },
     ];
 
     const itemTypeOptions = [

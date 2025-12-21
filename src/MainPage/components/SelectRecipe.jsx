@@ -124,11 +124,11 @@ function SelectRecipe({ selectedRecipes, setSelectedRecipes}){
                 </div>
                 <div className='objectEditAndDelete'>
                     <div className='objectDelete'>
-                        <button className='deleteButton' onClick={() => handleRemoveRecipeByName(object.name, object.version)}><b>DELETE</b></button>                    
+                        <button className='deleteButton' onClick={(e) => { e.stopPropagation(); handleRemoveRecipeByName(object.name, object.version); }}><b>DELETE</b></button>                    
                     </div>
                     <div className='objectEdit'>
                         {/* TODO: Make edit function into backend */}
-                        <button className='editButton'><b>EDIT</b></button>
+                        <button className='editButton' onClick={(e) => { e.stopPropagation(); }}><b>EDIT</b></button>
                     </div>
                 </div>
             </div>
