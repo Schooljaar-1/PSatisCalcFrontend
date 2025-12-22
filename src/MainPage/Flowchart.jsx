@@ -4,9 +4,10 @@ import { useEffect, useState} from 'react';
 import FlowCanvas from './components/ReactFlow.jsx';
 
 function Flowchart({ recipes, setRecipes }){
-    // The amount of items a user wants
     const [amounts, setAmounts] = useState({});
     const [flowData, setFlowData] = useState(null);
+    const [wattage, setWattage] = useState(null);
+
     // API base URL from env
     const API_URL = import.meta.env.VITE_API_URL;
 
@@ -59,7 +60,6 @@ function Flowchart({ recipes, setRecipes }){
                 }
             };
         });
-
         console.log("Combined Payload for Backend (items):", items);
 
         fetch(`${API_URL}/api/Flowchart`, {
@@ -80,8 +80,8 @@ function Flowchart({ recipes, setRecipes }){
                 handleErrorMessage(data.error);
                 return;
             }
-            setFlowData(data);
-            // console.log('Flowchart API response:', data);
+            setFlowData({ nodes: data.nodes, edges: data.edges });
+            setWattage(data.wattage);
         })
         .catch((err) => {
             handleErrorMessage(err.message || 'Failed to send flowchart payload');
@@ -163,7 +163,7 @@ function Flowchart({ recipes, setRecipes }){
                 </div>
                 <div className='selectedPartsActionButtons'>
                     <button className='calculateButton' onClick={handleSubmit}><b>Calculate</b></button>
-                    <button className='clearButton' onClick={() => { setRecipes([]); setAmounts({}); setFlowData(null); } }><b>Clear</b></button>
+                    <button className='clearButton' onClick={() => { setRecipes([]); setAmounts({}); setFlowData(null); setWattage(null); } }><b>Clear</b></button>
                 </div>
             </div>
             <div style={{display: 'flex', flexDirection: 'column', width: '100%', height: '100%'}}>
@@ -172,7 +172,84 @@ function Flowchart({ recipes, setRecipes }){
                 </div>
                 {/* TODO: Here will come settings like Miner: mk1,mk2,mk3. ALso maybe where the total calculated power is shown, etc. */}
                 <div className='controlDashBoard'>
-                    <p>kaas</p>
+                    <div className='controlWattage'>
+                            <b>Wattage (excl. miners): <span style={{ fontSize: '1.2em' }}>{wattage}{wattage !== null && '⚡'}</span></b>
+                    </div>
+                    <div className='controlTables'>
+                        <div className="minerTableDiv">
+                            <table className="minerTable">
+                                <thead>
+                                    <tr>
+                                        <th>MINER (MW)</th>
+                                        <th>50%</th>
+                                        <th>100%</th>
+                                        <th>150%</th>
+                                        <th>200%</th>
+                                        <th>250%</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th>Miner mk1</th>
+                                        <td>2.0</td>
+                                        <td>5.0</td>
+                                        <td>8.5</td>
+                                        <td>12.5</td>
+                                        <td>16.8</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Miner mk2</th>
+                                        <td>6.0</td>
+                                        <td>15.0</td>
+                                        <td>25.6</td>
+                                        <td>37.5</td>
+                                        <td>50.4</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Miner mk3</th>
+                                        <td>9.9</td>
+                                        <td>30.0</td>
+                                        <td>57.4</td>
+                                        <td>90.9</td>
+                                        <td>130.0</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div className="minerTableDiv">
+                            <table className="minerTable">
+                                <thead>
+                                    <tr>
+                                        <th>MINER (NODE)</th>
+                                        <th>Impure</th>
+                                        <th>Normal</th>
+                                        <th>Pure</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th>Miner mk1</th>
+                                        <td>30</td>
+                                        <td>60</td>
+                                        <td>120</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Miner mk2</th>
+                                        <td>60</td>
+                                        <td>120</td>
+                                        <td>240</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Miner mk3</th>
+                                        <td>120</td>
+                                        <td>240</td>
+                                        <td>480</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </div>
 
