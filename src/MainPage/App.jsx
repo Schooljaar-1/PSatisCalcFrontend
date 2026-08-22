@@ -4,7 +4,7 @@ import Topbar from './Topbar.jsx'
 import Description from './Description.jsx'
 import Recipes from './Recipes.jsx'
 import Flowchart from './Flowchart.jsx'
-import SavedPage from './SavedPage.jsx'
+import SavedRecipes from './SavedRecipes.jsx'
 import '../MainPage_Styling/app.css'
 
 function App() {
@@ -42,7 +42,9 @@ function App() {
                     <Route
                         path="/saved"
                         element={
-                            <SavedPage />
+                            <div className='savedMain'>
+                              <SavedRecipes />
+                            </div>
                         }
                     />
                 </Routes>
