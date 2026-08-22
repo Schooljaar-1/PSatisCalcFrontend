@@ -5,6 +5,7 @@ import Description from './Description.jsx'
 import Recipes from './Recipes.jsx'
 import Flowchart from './Flowchart.jsx'
 import SavedRecipes from './SavedRecipes.jsx'
+import SavedFlowchartDisplay from './SavedFlowchartDisplay.jsx'
 import '../MainPage_Styling/app.css'
 
 function App() {
@@ -43,7 +44,8 @@ function App() {
                         path="/saved"
                         element={
                             <div className='savedMain'>
-                              <SavedRecipes />
+                                <SavedRecipes />
+                                <SavedFlowchartDisplay />
                             </div>
                         }
                     />
