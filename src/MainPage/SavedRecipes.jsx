@@ -5,7 +5,9 @@ import '../MainPage_Styling/savedRecipes.css'
 function SavedRecipes() {
   return (
     <>
-        Hello
+        <div className='savedRecipeBox'>
+            Hello
+        </div>
     </>
   )
 }
